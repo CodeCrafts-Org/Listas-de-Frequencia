@@ -94,6 +94,8 @@ class ApplicationContainer
 
     public function makeWpdb()
     {
-        return $GLOBALS['wpdb'];
+        global $wpdb;
+        
+        return $wpdb;
     }
 }
