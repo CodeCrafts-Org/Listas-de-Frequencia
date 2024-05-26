@@ -15,9 +15,9 @@ class AdminController
     
     public function index()
     {
-        $view = include __DIR__ . '/partials/index.php';
+        $paginated = $this->listasDeFrequenciaService->paginateListas();
 
-        return $view;
+        return include __DIR__ . '/partials/index.php';
     }
 
     public function create()

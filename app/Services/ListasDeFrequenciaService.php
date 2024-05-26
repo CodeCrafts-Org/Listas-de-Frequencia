@@ -31,6 +31,13 @@ class ListasDeFrequenciaService
         $this->listaDeFrequenciaRepository = $listaDeFrequenciaRepository;
     }
 
+    public function paginateListas(int $page = 1, int $itemsPerPage = 10): array
+    {
+        $paginated = $this->listaDeFrequenciaRepository->offsetPaginate($page, $itemsPerPage);
+
+        return $paginated;
+    }
+
     public function getLista(int $listaId): ?array
     {
         $listaDeFrequencia = $this->listaDeFrequenciaRepository->getById($listaId);
