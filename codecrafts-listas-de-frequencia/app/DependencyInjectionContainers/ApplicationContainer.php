@@ -14,6 +14,7 @@ use CodeCrafts\ListasDeFrequencia\App\Repositories\FrequenciaRepository;
 use CodeCrafts\ListasDeFrequencia\App\Repositories\ListaDeFrequenciaInMemoryRepository;
 use CodeCrafts\ListasDeFrequencia\App\Repositories\ListaDeFrequenciaRepository;
 use CodeCrafts\ListasDeFrequencia\App\Services\ListasDeFrequenciaService;
+use Error;
 
 class ApplicationContainer
 {
@@ -45,17 +46,21 @@ class ApplicationContainer
 
     public function makeFrequenciaDatabaseTable(): FrequenciaDatabaseTable
     {
-        return new FrequenciaDatabaseTable();
+        $connection = $this->makeWpdb();
+
+        return new FrequenciaDatabaseTable($connection);
     }
 
     public function makeListaDeFrequenciaDatabaseTable(): ListaDeFrequenciaDatabaseTable
     {
-        return new ListaDeFrequenciaDatabaseTable();
+        $connection = $this->makeWpdb();
+
+        return new ListaDeFrequenciaDatabaseTable($connection);
     }
 
     public function makeWordPressDatabase(): WordPressDatabase
     {
-        $connection = $GLOBALS['wpdb'];
+        $connection = $this->makeWpdb();
         
         return new WordPressDatabase($connection);
     }
@@ -90,5 +95,15 @@ class ApplicationContainer
         $listaDeFrequenciaRepository = $this->makeIListaDeFrequenciaRepository();
 
         return new ListasDeFrequenciaService($frequenciaRepository, $listaDeFrequenciaRepository);
+    }
+
+    public function makeWpdb()
+    {
+        $connection = $GLOBALS['wpdb'] ?? null;
+        if ($connection === null) {
+            throw new Error('WPDB connection not estabilished');
+        }
+
+        return $connection;
     }
 }
