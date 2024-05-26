@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Plugin Name: Listas de Frequência
+ * Description: Gerenciador de frequências para WordPress.
+ * Version: 1.0.0
+ * Author: CodeCrafts
+ * Author URI: https://laraveltuts.com
+ */
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 use CodeCrafts\ListasDeFrequencia\Includes\Plugin;
@@ -26,6 +34,8 @@ if ( ! defined( 'WPINC' ) ) {
 $pluginDatabase = new PluginDatabase(__DIR__ . '/database/migrations', $GLOBALS['wpdb']);
 register_activation_hook(__FILE__, [new PluginActivator($pluginDatabase), 'activate']);
 register_deactivation_hook(__FILE__, [new PluginDeactivator($pluginDatabase), 'deactivate']);
+
+include 'functions.php';
 
 /**
  * Begins execution of the plugin.
