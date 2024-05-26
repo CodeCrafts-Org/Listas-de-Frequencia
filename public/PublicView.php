@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeCrafts\ListasDeFrequencia\Public;
+namespace CodeCrafts\ListasDeFrequencia\PublicView;
 
 /**
  * The public-facing functionality of the plugin.

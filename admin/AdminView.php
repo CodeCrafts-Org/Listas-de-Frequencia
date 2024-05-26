@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeCrafts\ListasDeFrequencia\Admin;
+namespace CodeCrafts\ListasDeFrequencia\AdminView;
 
 /**
  * The admin-specific functionality of the plugin.

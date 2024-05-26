@@ -2,8 +2,8 @@
 
 namespace CodeCrafts\ListasDeFrequencia\Includes;
 
-use CodeCrafts\ListasDeFrequencia\Admin\AdminView;
-use CodeCrafts\ListasDeFrequencia\Public\PublicView;
+use CodeCrafts\ListasDeFrequencia\AdminView\AdminView;
+use CodeCrafts\ListasDeFrequencia\PublicView\PublicView;
 
 /**
  * The file that defines the core plugin class
