@@ -15,11 +15,15 @@ class AdminController
     
     public function index()
     {
-        return 'AdminController::index';
+        $view = include __DIR__ . '/partials/index.php';
+
+        return $view;
     }
 
     public function create()
     {
-        return 'AdminController::create';
+        $view = include __DIR__ . '/partials/create.php';
+        
+        return $view;
     }
 }
