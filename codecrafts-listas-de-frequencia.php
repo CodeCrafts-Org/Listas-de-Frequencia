@@ -23,8 +23,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-register_activation_hook(__FILE__, [PluginActivator::class, 'activate']);
-register_deactivation_hook(__FILE__, [PluginDeactivator::class, 'deactivate']);
+$pluginDatabase = new PluginDatabase(__DIR__ . '/database/migrations', $GLOBALS['wpdb']);
+register_activation_hook(__FILE__, [new PluginActivator($pluginDatabase), 'activate']);
+register_deactivation_hook(__FILE__, [new PluginDeactivator($pluginDatabase), 'deactivate']);
 
 /**
  * Begins execution of the plugin.

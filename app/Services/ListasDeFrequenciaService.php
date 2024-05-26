@@ -13,6 +13,7 @@ use CodeCrafts\ListasDeFrequencia\App\Exceptions\ListaNotFoundException;
 use CodeCrafts\ListasDeFrequencia\App\ValueObjects\DataDeLancamento;
 use CodeCrafts\ListasDeFrequencia\App\ValueObjects\EntityId;
 use CodeCrafts\ListasDeFrequencia\App\ValueObjects\EntityType;
+use CodeCrafts\ListasDeFrequencia\App\ValueObjects\ForeignId;
 use CodeCrafts\ListasDeFrequencia\App\ValueObjects\Presenca;
 use CodeCrafts\ListasDeFrequencia\App\ValueObjects\Titulo;
 
@@ -72,7 +73,7 @@ class ListasDeFrequenciaService
             throw new ListaNotFoundException($listaId);
         }
         $frequenciaCreation = new FrequenciaCreation(
-            new EntityId(['lista_de_frequencia_id' => $listaId], 'lista_de_frequencia_id'),
+            new ForeignId(['lista_de_frequencia_id' => $listaId], 'lista_de_frequencia_id'),
             new Presenca($data),
             new Titulo($data),
             new EntityId($data, 'frequenciavel_id'),

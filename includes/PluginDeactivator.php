@@ -13,11 +13,17 @@ namespace CodeCrafts\ListasDeFrequencia\Includes;
  */
 class PluginDeactivator
 {
+	protected PluginDatabase $pluginDatabase;
+
+	public function __construct(PluginDatabase $pluginDatabase) {
+		$this->pluginDatabase = $pluginDatabase;
+	}
+
 	/**
 	 * 
 	 */
-	public static function deactivate(): void
+	public function deactivate(): void
 	{
-
+		$this->pluginDatabase->down();
 	}
 }

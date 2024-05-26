@@ -6,7 +6,7 @@ use CodeCrafts\ListasDeFrequencia\Database\Migrator;
 
 return new class implements Migrator
 {
-    public function migrate(): string
+    public function up(): string
     {
         $query = "CREATE TABLE codecrafts_frequencias (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -25,7 +25,7 @@ return new class implements Migrator
         return $query;
     }
 
-    public function rollback(): string
+    public function down(): string
     {
         return "DROP TABLE IF EXISTS codecrafts_frequencias;";
     }

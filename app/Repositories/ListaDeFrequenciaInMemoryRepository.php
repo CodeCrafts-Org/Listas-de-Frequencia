@@ -43,10 +43,10 @@ class ListaDeFrequenciaInMemoryRepository implements IListaDeFrequenciaRepositor
         $listaDeFrequenciaEntity = new ListaDeFrequenciaEntity((object) [
             'id' => $this->autoincrement,
             'titulo' => $listaDeFrequenciaCreation->getTitulo()->toString(),
-            'listador_de_frequencia_id' => $listaDeFrequenciaCreation->getListadorDeFrequenciaId()->toInteger(),
+            'listador_de_frequencia_id' => $listaDeFrequenciaCreation->getListadorDeFrequenciaId()->toString(),
             'listador_de_frequencia_type' => $listaDeFrequenciaCreation->getListadorDeFrequenciaType()->toString(),
             'data_de_lancamento' => $listaDeFrequenciaCreation->getDataDeLancamento()->toString(),
-            'created_at' => date('Y-m-d'),
+            'created_at' => date('Y-m-d h:i:s'),
             'updated_at' => null,
             'deleted_at' => null,
         ]);

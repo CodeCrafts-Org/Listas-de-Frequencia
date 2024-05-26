@@ -4,12 +4,13 @@ namespace CodeCrafts\ListasDeFrequencia\App\DataTransferObjects;
 
 use CodeCrafts\ListasDeFrequencia\App\ValueObjects\EntityId;
 use CodeCrafts\ListasDeFrequencia\App\ValueObjects\EntityType;
+use CodeCrafts\ListasDeFrequencia\App\ValueObjects\ForeignId;
 use CodeCrafts\ListasDeFrequencia\App\ValueObjects\Presenca;
 use CodeCrafts\ListasDeFrequencia\App\ValueObjects\Titulo;
 
 class FrequenciaCreation
 {
-    protected EntityId $listaDeFrequenciaId;
+    protected ForeignId $listaDeFrequenciaId;
     
     protected Presenca $isPresente;
     
@@ -19,7 +20,7 @@ class FrequenciaCreation
     
     protected EntityType $frequenciavelType;
 
-    public function __construct(EntityId $listaDeFrequenciaId, Presenca $isPresente, Titulo $titulo, EntityId $frequenciavelId, EntityType $frequenciavelType) 
+    public function __construct(ForeignId $listaDeFrequenciaId, Presenca $isPresente, Titulo $titulo, EntityId $frequenciavelId, EntityType $frequenciavelType) 
     {
         $this->listaDeFrequenciaId = $listaDeFrequenciaId;
         $this->isPresente = $isPresente;
@@ -28,7 +29,7 @@ class FrequenciaCreation
         $this->frequenciavelType = $frequenciavelType;
     }
 
-    public function getListaDeFrequenciaId(): EntityId
+    public function getListaDeFrequenciaId(): ForeignId
     {
         return $this->listaDeFrequenciaId;
     }

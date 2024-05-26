@@ -4,7 +4,7 @@ namespace CodeCrafts\ListasDeFrequencia\Database;
 
 interface Migrator
 {
-    public function migrate(): string;
+    public function up(): string;
 
-    public function rollback(): string;
+    public function down(): string;
 }

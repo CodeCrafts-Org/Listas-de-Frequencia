@@ -90,7 +90,7 @@ class FrequenciaDataAccessObject
         $result = $this->wordPressDatabase->insert($table, [
             'lista_de_frequencia_id' => $listaDeFrequenciaId->toInteger(),
             'titulo' => $titulo->toString(),
-            'frequenciavel_id' => $frequenciavelId->toInteger(),
+            'frequenciavel_id' => $frequenciavelId->toString(),
             'frequenciavel_type' => $frequenciavelType->toString(),
             'is_presente' => $isPresente->toBoolean(),
         ]);

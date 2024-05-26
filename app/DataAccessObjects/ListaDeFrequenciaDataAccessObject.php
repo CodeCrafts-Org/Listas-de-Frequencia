@@ -88,7 +88,7 @@ class ListaDeFrequenciaDataAccessObject
         $table = $this->listaDeFrequenciaDatabaseTable->getName();
         $result = $this->wordPressDatabase->insert($table, [
             'titulo' => $titulo->toString(),
-            'listador_de_frequencia_id' => $listadorDeFrequenciaId->toInteger(),
+            'listador_de_frequencia_id' => $listadorDeFrequenciaId->toString(),
             'listador_de_frequencia_type' => $listadorDeFrequenciaType->toString(),
             'data_de_lancamento' => $dataDeLancamento->toString(),
         ]);

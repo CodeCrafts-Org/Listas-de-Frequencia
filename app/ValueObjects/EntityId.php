@@ -6,7 +6,7 @@ use CodeCrafts\ListasDeFrequencia\App\Exceptions\InvalidDataException;
 
 class EntityId
 {
-    protected int $entityId;
+    protected string $entityId;
 
     public function __construct(array $data, string $key)
     {
@@ -14,14 +14,21 @@ class EntityId
         if ($entityId === null) {
             throw new InvalidDataException("O campo '{$key}' é obrigatório");
         }
-        if (is_integer($entityId) === false) {
-            throw new InvalidDataException("O campo '{$key}' deve ser um inteiro");
+        if (is_string($entityId) === false) {
+            throw new InvalidDataException("O campo '{$key}' deve ser uma string");
         }
-        $this->entityId = intval($entityId);
+        if (strlen($entityId) === 0) {
+            throw new InvalidDataException("O campo '{$key}' não pode estar vazio");
+        }
+        if (strlen($entityId) > 255) {
+            throw new InvalidDataException("O campo '{$key}' não pode conter mais que 255 caracteres");
+        }
+        $this->entityId = $entityId;
     }
 
-    public function toInteger(): int
+    public function toString(): string
     {
         return $this->entityId;
     }
 }
+

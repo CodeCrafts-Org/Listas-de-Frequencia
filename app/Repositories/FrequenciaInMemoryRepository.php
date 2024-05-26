@@ -51,10 +51,10 @@ class FrequenciaInMemoryRepository implements IFrequenciaRepository
             'id' => $this->autoincrement,
             'lista_de_frequencia_id' => $frequenciaCreation->getListaDeFrequenciaId()->toInteger(),
             'titulo' => $frequenciaCreation->getTitulo()->toString(),
-            'frequenciavel_id' => $frequenciaCreation->getFrequenciavelId()->toInteger(),
+            'frequenciavel_id' => $frequenciaCreation->getFrequenciavelId()->toString(),
             'frequenciavel_type' => $frequenciaCreation->getFrequenciavelType()->toString(),
             'is_presente' => $frequenciaCreation->getIsPresente()->toBoolean(),
-            'created_at' => date('Y-m-d'),
+            'created_at' => date('Y-m-d h:i:s'),
             'updated_at' => null,
             'deleted_at' => null,
         ]);
@@ -112,9 +112,9 @@ class FrequenciaInMemoryRepository implements IFrequenciaRepository
             'frequenciavel_id' => $frequencia->getFrequenciavelId(),
             'frequenciavel_type' => $frequencia->getFrequenciavelType(),
             'is_presente' => $isPresente['is_presente'] ?? $frequencia->getIsPresente(),
-            'created_at' => $frequencia->getCreatedAt()->format('Y-m-d'),
-            'updated_at' => date('Y-m-d'),
-            'deleted_at' => $frequencia->getDeletedAt()?->format('Y-m-d'),
+            'created_at' => $frequencia->getCreatedAt()->format('Y-m-d h:i:s'),
+            'updated_at' => date('Y-m-d h:i:s'),
+            'deleted_at' => $frequencia->getDeletedAt()?->format('Y-m-d h:i:s'),
         ]);
 
         return true;

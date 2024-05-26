@@ -86,7 +86,7 @@ class FrequenciaRepository implements IFrequenciaRepository
     public function update(int $id, array $isPresente): ?bool
     {
         $result = $this->frequenciaDataAccessObject->updateSingleById($id, $isPresente, [
-            'updated_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d h:i:s'),
         ]);
         if ($result === false) {
             return null;

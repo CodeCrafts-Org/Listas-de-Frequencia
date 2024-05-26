@@ -13,14 +13,14 @@ try {
     $listasDeFrequenciaService = $applicationContainer->makeListasDeFrequenciaService();
     $lista = $listasDeFrequenciaService->createLista([
         'titulo' => 'Aaa 1',
-        'listador_de_frequencia_id' => 1,
+        'listador_de_frequencia_id' => '1',
         'listador_de_frequencia_type' => 'Aaa\Aaa',
         'data_de_lancamento' => date('Y-m-d'), 
     ]);
     $frequencia = $listasDeFrequenciaService->createFrequenciaForLista($lista->getId(), [
         'is_presente' => true,
         'titulo' => 'Aaa 2',
-        'frequenciavel_id' => 2,
+        'frequenciavel_id' => '2',
         'frequenciavel_type' => 'Aaa\Aaa',
     ]);
     $result = $listasDeFrequenciaService->setPresencaFromFrequencia($frequencia->getId(), false);
