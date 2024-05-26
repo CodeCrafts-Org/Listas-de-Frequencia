@@ -114,7 +114,7 @@ class FrequenciaInMemoryRepository implements IFrequenciaRepository
             'is_presente' => $isPresente['is_presente'] ?? $frequencia->getIsPresente(),
             'created_at' => $frequencia->getCreatedAt()->format('Y-m-d h:i:s'),
             'updated_at' => date('Y-m-d h:i:s'),
-            'deleted_at' => $frequencia->getDeletedAt()?->format('Y-m-d h:i:s'),
+            'deleted_at' => $frequencia->getDeletedAt() !== null ? $frequencia->getDeletedAt()->format('Y-m-d h:i:s') : null,
         ]);
 
         return true;
