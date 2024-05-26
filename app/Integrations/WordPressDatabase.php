@@ -22,7 +22,11 @@ class WordPressDatabase
         return $this->connection->get_var($query);
     }
 
-    public function insert(string $table, array $data): int|bool
+    /**
+     * @return bool quando houverem erros na inserção (sempre false)
+     * @return int quando for bem-sucedido, indicando o número de linhas afetadas (sempre 1)
+     */
+    public function insert(string $table, array $data)
     {
         return $this->connection->insert($table, $data);
     }
@@ -42,7 +46,11 @@ class WordPressDatabase
         return $this->connection->get_row($query);
     }
 
-    public function update(string $table, array $data, array $where): int|false
+    /**
+     * @return bool quando houverem erros na inserção (sempre false)
+     * @return int quando for bem-sucedido, indicando o número de linhas afetadas
+     */
+    public function update(string $table, array $data, array $where)
     {
         return $this->connection->update($table, $data, $where, null, null);
     }

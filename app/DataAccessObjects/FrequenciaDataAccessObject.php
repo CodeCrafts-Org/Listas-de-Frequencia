@@ -122,7 +122,11 @@ class FrequenciaDataAccessObject
         return $results;
     }
 
-    public function updateSingleById(int $id, array $isPresente, array $updatedAt): int|false
+    /**
+     * @return bool quando houverem erros na inserção (sempre false)
+     * @return int quando for bem-sucedido, indicando o número de linhas afetadas
+     */
+    public function updateSingleById(int $id, array $isPresente, array $updatedAt)
     {
         $primaryKey = $this->frequenciaDatabaseTable->getPrimaryKey();
         $table = $this->frequenciaDatabaseTable->getName();
