@@ -2,8 +2,8 @@
 
 namespace CodeCrafts\ListasDeFrequencia\Includes;
 
-use CodeCrafts\ListasDeFrequencia\Admin\PluginAdmin;
-use CodeCrafts\ListasDeFrequencia\Public\PluginPublic;
+use CodeCrafts\ListasDeFrequencia\Admin\AdminView;
+use CodeCrafts\ListasDeFrequencia\Public\PublicView;
 
 /**
  * The file that defines the core plugin class
@@ -74,12 +74,12 @@ class Plugin
 	 */
 	private function defineAdminHooks(): void
 	{
-		$pluginAdmin = new PluginAdmin(
+		$adminView = new AdminView(
 			$this->getName(), 
 			$this->getVersion()
 		);
-		$this->loader->addAction('admin_enqueue_scripts', $pluginAdmin, 'enqueueStyles');
-		$this->loader->addAction('admin_enqueue_scripts', $pluginAdmin, 'enqueueScripts');
+		$this->loader->addAction('admin_enqueue_scripts', $adminView, 'enqueueStyles');
+		$this->loader->addAction('admin_enqueue_scripts', $adminView, 'enqueueScripts');
 	}
 
 	/**
@@ -88,12 +88,12 @@ class Plugin
 	 */
 	private function definePublicHooks(): void
 	{
-		$pluginPublic = new PluginPublic(
+		$publicView = new PublicView(
 			$this->getName(),
 			$this->getVersion()
 		);
-		$this->loader->addAction('wp_enqueue_scripts', $pluginPublic, 'enqueueStyles');
-		$this->loader->addAction('wp_enqueue_scripts', $pluginPublic, 'enqueueScripts');
+		$this->loader->addAction('wp_enqueue_scripts', $publicView, 'enqueueStyles');
+		$this->loader->addAction('wp_enqueue_scripts', $publicView, 'enqueueScripts');
 	}
 
 	/**

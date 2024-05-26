@@ -12,8 +12,8 @@ namespace CodeCrafts\ListasDeFrequencia\Public;
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  */
-class PluginPublic {
-
+class PublicView
+{
 	/**
 	 * The ID of this plugin.
 	 */

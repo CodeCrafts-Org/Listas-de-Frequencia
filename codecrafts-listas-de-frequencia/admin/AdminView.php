@@ -12,7 +12,7 @@ namespace CodeCrafts\ListasDeFrequencia\Admin;
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  */
-class PluginAdmin
+class AdminView
 {
 	/**
 	 * The ID of this plugin.
