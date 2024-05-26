@@ -15,15 +15,18 @@ class AdminController
     
     public function index()
     {
+        ob_start();
         $paginated = $this->listasDeFrequenciaService->paginateListas();
+        include __DIR__ . '/partials/index.php';
 
-        return include __DIR__ . '/partials/index.php';
+        return ob_get_clean();
     }
 
     public function create()
     {
-        $view = include __DIR__ . '/partials/create.php';
-        
-        return $view;
+        ob_start();
+        include __DIR__ . '/partials/create.php';
+
+        return ob_get_clean();
     }
 }

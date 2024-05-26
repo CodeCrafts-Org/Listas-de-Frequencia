@@ -11,14 +11,20 @@
 
     <tbody>
     <?php foreach ($paginated['items'] as $lista) {
-        echo "
+        echo '
         <tr>
             <td>{$lista->getId()}</td>
             <td>{$lista->getTitulo()}</td>
-            <td>{$lista->getDataDeLancamento()->format('Y-m-d')}</td>
-            <td>aaaa</td>
+            <td>{$lista->getDataDeLancamento()->format("Y-m-d")}</td>
+            <td>
+                <div style="display:flex">
+                    <a href="#">Detalhes</a>
+                    <a href="#">Editar</a>
+                    <a href="#">Excluir</a>
+                </div>
+            </td>
         </tr>
-        ";
+        ';
     } ?>
     </tbody>
 
