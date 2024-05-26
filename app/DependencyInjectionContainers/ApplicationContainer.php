@@ -14,7 +14,6 @@ use CodeCrafts\ListasDeFrequencia\App\Repositories\FrequenciaRepository;
 use CodeCrafts\ListasDeFrequencia\App\Repositories\ListaDeFrequenciaInMemoryRepository;
 use CodeCrafts\ListasDeFrequencia\App\Repositories\ListaDeFrequenciaRepository;
 use CodeCrafts\ListasDeFrequencia\App\Services\ListasDeFrequenciaService;
-use Error;
 
 class ApplicationContainer
 {
@@ -95,11 +94,6 @@ class ApplicationContainer
 
     public function makeWpdb()
     {
-        $connection = $GLOBALS['wpdb'] ?? null;
-        if ($connection === null) {
-            throw new Error('WPDB connection not estabilished');
-        }
-
-        return $connection;
+        return $GLOBALS['wpdb'];
     }
 }
