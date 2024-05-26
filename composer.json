@@ -11,8 +11,8 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "chmod +x -R tests"
+            "chmod +x tests/Test.php"
         ],
-        "test": "@php tests/*.php"
+        "test": "@php tests/Test.php"
     }
 }
