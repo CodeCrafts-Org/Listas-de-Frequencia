@@ -20,7 +20,7 @@ class PluginDatabase
 
         foreach ($migrationFiles as $migration) {
             $migration = require $migration;
-            $query = migration->up();
+            $query = $migration->up();
             $this->wpdb->query($query);
         }
     }
@@ -32,7 +32,7 @@ class PluginDatabase
 
         foreach ($migrationFiles as $migration) {
             $migration = require $migration;
-            $query = migration->down();
+            $query = $migration->down();
             $this->wpdb->query($query);
         }
     }
