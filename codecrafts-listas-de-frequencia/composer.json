@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "psr-4": {
+            "CodeCrafts\\ListasDeFrequencia\\App\\": "app/",
+            "CodeCrafts\\ListasDeFrequencia\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "chmod +x -R tests"
+        ],
+        "test": "@php tests/*.php"
+    }
+}
