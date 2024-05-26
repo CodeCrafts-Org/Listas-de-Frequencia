@@ -1,9 +1,11 @@
 {
     "autoload": {
         "psr-4": {
+            "CodeCrafts\\ListasDeFrequencia\\Admin\\": "admin/",
             "CodeCrafts\\ListasDeFrequencia\\App\\": "app/",
-            "CodeCrafts\\ListasDeFrequencia\\Tests\\": "tests/",
-            "CodeCrafts\\ListasDeFrequencia\\Includes\\": "includes/"
+            "CodeCrafts\\ListasDeFrequencia\\Includes\\": "includes/",
+            "CodeCrafts\\ListasDeFrequencia\\Public\\": "public/",
+            "CodeCrafts\\ListasDeFrequencia\\Tests\\": "tests/"
         }
     },
     "scripts": {

@@ -7,5 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'CodeCrafts\\ListasDeFrequencia\\Tests\\' => array($baseDir . '/tests'),
+    'CodeCrafts\\ListasDeFrequencia\\Public\\' => array($baseDir . '/public'),
+    'CodeCrafts\\ListasDeFrequencia\\Includes\\' => array($baseDir . '/includes'),
     'CodeCrafts\\ListasDeFrequencia\\App\\' => array($baseDir . '/app'),
+    'CodeCrafts\\ListasDeFrequencia\\Admin\\' => array($baseDir . '/admin'),
 );

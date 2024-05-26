@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 use CodeCrafts\ListasDeFrequencia\Includes\Plugin;
 use CodeCrafts\ListasDeFrequencia\Includes\PluginActivator;
@@ -34,7 +34,7 @@ register_deactivation_hook(__FILE__, [PluginDeactivator::class, 'deactivate']);
  * not affect the page life cycle.
  */
 $plugin = new Plugin(
-	/* loader: */ new PluginLoader(),
+	/* pluginLoader: */ new PluginLoader(),
 	/* name: */ 'codecrafts-listas-de-frequencia',
 	/* version: */ '1.0.0'
 );

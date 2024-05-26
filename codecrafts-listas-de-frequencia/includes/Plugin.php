@@ -27,7 +27,7 @@ class Plugin
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 */
-	protected Loader $loader;
+	protected PluginLoader $pluginLoader;
 
 	/**
 	 * The unique identifier of this plugin.
@@ -46,8 +46,8 @@ class Plugin
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 */
-	public function __construct(Loader $loader, string $name, string $version) {
-		$this->loader = $loader;
+	public function __construct(PluginLoader $pluginLoader, string $name, string $version) {
+		$this->pluginLoader = $pluginLoader;
 		$this->name = $name;
 		$this->version = $version;
 
@@ -65,7 +65,7 @@ class Plugin
 	private function setLocale(): void
 	{
 		$pluginTranslation = new PluginTranslation();
-		$this->loader->addAction('plugins_loaded', $pluginTranslation, 'loadPluginTextdomain');
+		$this->pluginLoader->addAction('plugins_loaded', $pluginTranslation, 'loadPluginTextdomain');
 	}
 
 	/**
@@ -78,8 +78,8 @@ class Plugin
 			$this->getName(), 
 			$this->getVersion()
 		);
-		$this->loader->addAction('admin_enqueue_scripts', $adminView, 'enqueueStyles');
-		$this->loader->addAction('admin_enqueue_scripts', $adminView, 'enqueueScripts');
+		$this->pluginLoader->addAction('admin_enqueue_scripts', $adminView, 'enqueueStyles');
+		$this->pluginLoader->addAction('admin_enqueue_scripts', $adminView, 'enqueueScripts');
 	}
 
 	/**
@@ -92,8 +92,8 @@ class Plugin
 			$this->getName(),
 			$this->getVersion()
 		);
-		$this->loader->addAction('wp_enqueue_scripts', $publicView, 'enqueueStyles');
-		$this->loader->addAction('wp_enqueue_scripts', $publicView, 'enqueueScripts');
+		$this->pluginLoader->addAction('wp_enqueue_scripts', $publicView, 'enqueueStyles');
+		$this->pluginLoader->addAction('wp_enqueue_scripts', $publicView, 'enqueueScripts');
 	}
 
 	/**
@@ -101,7 +101,7 @@ class Plugin
 	 */
 	public function run(): void
 	{
-		$this->loader->run();
+		$this->pluginLoader->run();
 	}
 
 	/**
@@ -116,9 +116,9 @@ class Plugin
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 */
-	public function getLoader(): Loader
+	public function getLoader(): PluginLoader
 	{
-		return $this->loader;
+		return $this->pluginLoader;
 	}
 
 	/**

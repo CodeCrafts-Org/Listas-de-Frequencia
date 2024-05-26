@@ -28,7 +28,7 @@ class PluginLoader
 	/**
 	 * Add a new action to the collection to be registered with WordPress.
 	 */
-	public function addAction(string $action, object $component, string $method, int $priority = 10, int $acceptedArgs = 1 ): void
+	public function addAction(string $action, object $component, string $method, int $priority = 10, int $acceptedArgs = 1): void
 	{
 		$this->actions[] = [
 			'hook' => $action,
@@ -41,7 +41,7 @@ class PluginLoader
 	/**
 	 * Add a new filter to the collection to be registered with WordPress.
 	 */
-	public function addFilter(string $filter, object $component, string $method, int $priority = 10, int $acceptedArgs = 1 ): void
+	public function addFilter(string $filter, object $component, string $method, int $priority = 10, int $acceptedArgs = 1): void
 	{
 		$this->filters[] = [
 			'hook' => $filter,

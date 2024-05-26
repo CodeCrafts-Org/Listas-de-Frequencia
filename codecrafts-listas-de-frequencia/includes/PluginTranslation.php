@@ -20,12 +20,12 @@ class PluginTranslation
 	/**
 	 * Load the plugin text domain for translation.
 	 */
-	public function loadPluginTextdomain(): void
+	public function loadPluginTextdomain(): bool
 	{
-		load_plugin_textdomain(
-			'codecrafts-listas-de-frequencia',
-			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
-		);
+		$domain = 'codecrafts-listas-de-frequencia';
+		$deprecated = false;
+		$pluginRelativePath = dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/';
+
+		return load_plugin_textdomain($domain, $deprecated, $pluginRelativePath);
 	}
 }

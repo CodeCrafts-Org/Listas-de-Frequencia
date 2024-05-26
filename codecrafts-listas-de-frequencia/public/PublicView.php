@@ -49,7 +49,7 @@ class PublicView
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_style( $this->pluginName, plugin_dir_url( __FILE__ ) . 'css/public.css', array(), $this->version, 'all' );
+		wp_enqueue_style($this->pluginName, plugin_dir_url( __FILE__ ) . 'css/public.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -68,6 +68,6 @@ class PublicView
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_script( $this->pluginName, plugin_dir_url( __FILE__ ) . 'js/public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/public.js', array( 'jquery' ), $this->version, false);
 	}
 }
