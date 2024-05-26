@@ -12,6 +12,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use CodeCrafts\ListasDeFrequencia\Includes\Plugin;
 use CodeCrafts\ListasDeFrequencia\Includes\PluginActivator;
+use CodeCrafts\ListasDeFrequencia\Includes\PluginDatabase;
 use CodeCrafts\ListasDeFrequencia\Includes\PluginDeactivator;
 use CodeCrafts\ListasDeFrequencia\Includes\PluginLoader;
 
