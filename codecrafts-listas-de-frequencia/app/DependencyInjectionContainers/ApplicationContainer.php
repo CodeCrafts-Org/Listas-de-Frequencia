@@ -19,12 +19,12 @@ class ApplicationContainer
 {
     public function makeIFrequenciaRepository(): IFrequenciaRepository
     {
-        return $this->makeFrequenciaInMemoryRepository();
+        return $this->makeFrequenciaRepository();
     }
 
     public function makeIListaDeFrequenciaRepository(): IListaDeFrequenciaRepository
     {
-        return $this->makeListaDeFrequenciaInMemoryRepository();
+        return $this->makeListaDeFrequenciaRepository();
     }
 
     public function makeFrequenciaDataAccessObject(): FrequenciaDataAccessObject
