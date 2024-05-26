@@ -2,7 +2,9 @@
 
 namespace CodeCrafts\ListasDeFrequencia\Includes;
 
+use CodeCrafts\ListasDeFrequencia\AdminView\AdminController;
 use CodeCrafts\ListasDeFrequencia\AdminView\AdminView;
+use CodeCrafts\ListasDeFrequencia\App\DependencyInjectionContainers\ApplicationContainer;
 use CodeCrafts\ListasDeFrequencia\PublicView\PublicView;
 
 /**
@@ -39,6 +41,8 @@ class Plugin
 	 */
 	protected string $version;
 
+	protected ApplicationContainer $applicationContainer;
+
 	/**
 	 * Define the core functionality of the plugin.
 	 *
@@ -46,10 +50,11 @@ class Plugin
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 */
-	public function __construct(PluginLoader $pluginLoader, string $name, string $version) {
+	public function __construct(PluginLoader $pluginLoader, string $name, string $version, ApplicationContainer $applicationContainer) {
 		$this->pluginLoader = $pluginLoader;
 		$this->name = $name;
 		$this->version = $version;
+		$this->applicationContainer = $applicationContainer;
 
 		$this->setLocale();
 		$this->defineAdminHooks();
@@ -74,12 +79,17 @@ class Plugin
 	 */
 	private function defineAdminHooks(): void
 	{
+		$adminController = new AdminController(
+			$this->applicationContainer->makeListasDeFrequenciaService()
+		);
 		$adminView = new AdminView(
 			$this->getName(), 
-			$this->getVersion()
+			$this->getVersion(),
+			$adminController,
 		);
 		$this->pluginLoader->addAction('admin_enqueue_scripts', $adminView, 'enqueueStyles');
 		$this->pluginLoader->addAction('admin_enqueue_scripts', $adminView, 'enqueueScripts');
+		$this->pluginLoader->addAction('admin_menu', $adminView, 'addMenuAndSubmenus');
 	}
 
 	/**

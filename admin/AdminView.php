@@ -25,12 +25,18 @@ class AdminView
 	private string $version;
 
 	/**
+	 * The version of this plugin.
+	 */
+	private AdminController $adminController;
+
+	/**
 	 * Initialize the class and set its properties.
 	 */
-	public function __construct(string $pluginName, string $version)
+	public function __construct(string $pluginName, string $version, AdminController $adminController)
 	{
 		$this->pluginName = $pluginName;
 		$this->version = $version;
+		$this->adminController = $adminController;
 	}
 
 	/**
@@ -69,5 +75,11 @@ class AdminView
 		 * class.
 		 */
 		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), $this->version, false);
+	}
+
+	public function addMenuAndSubmenus(): void
+	{
+		add_menu_page('Listas de Frequência', 'Listas de Frequência', 'administrator', 'listas-de-frequencia', [$this->adminController, 'index']);
+		add_submenu_page('listas-de-frequencia', 'Listas de Frequência - Cadastro', 'Cadastrar Nova Lista', 'administrator', 'cadastro', [$this->adminController, 'create']);
 	}
 }

@@ -10,6 +10,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+use CodeCrafts\ListasDeFrequencia\App\DependencyInjectionContainers\ApplicationContainer;
 use CodeCrafts\ListasDeFrequencia\Includes\Plugin;
 use CodeCrafts\ListasDeFrequencia\Includes\PluginActivator;
 use CodeCrafts\ListasDeFrequencia\Includes\PluginDatabase;
@@ -48,6 +49,7 @@ include 'functions.php';
 $plugin = new Plugin(
 	/* pluginLoader: */ new PluginLoader(),
 	/* name: */ 'codecrafts-listas-de-frequencia',
-	/* version: */ '1.0.0'
+	/* version: */ '1.0.0',
+	/* applicationContainer: */ new ApplicationContainer()
 );
 $plugin->run();
