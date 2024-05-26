@@ -30,5 +30,5 @@ try {
         throw new Exception('Expected result to be true');
     }
 } catch (Throwable $throwable) {
-    echo $throwable->getMessage();
+    echo $throwable->getMessage() . PHP_EOL;
 }
