@@ -3,6 +3,7 @@
         "psr-4": {
             "CodeCrafts\\ListasDeFrequencia\\Admin\\": "admin/",
             "CodeCrafts\\ListasDeFrequencia\\App\\": "app/",
+            "CodeCrafts\\ListasDeFrequencia\\Database\\": "database/",
             "CodeCrafts\\ListasDeFrequencia\\Includes\\": "includes/",
             "CodeCrafts\\ListasDeFrequencia\\Public\\": "public/",
             "CodeCrafts\\ListasDeFrequencia\\Tests\\": "tests/"

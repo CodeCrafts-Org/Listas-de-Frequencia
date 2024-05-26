@@ -4,17 +4,9 @@ namespace CodeCrafts\ListasDeFrequencia\App\DatabaseTables;
 
 class FrequenciaDatabaseTable
 {
-    protected $connection;
-
-    public function __construct(
-        $connection
-    ) {
-        $this->connection = $connection;
-    }
-
     public function getName(): string
     {
-        return "{$this->connection->prefix}frequencias";
+        return "codecrafts_frequencias";
     }
 
     public function getPrimaryKey(): string

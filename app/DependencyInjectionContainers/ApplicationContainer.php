@@ -46,16 +46,12 @@ class ApplicationContainer
 
     public function makeFrequenciaDatabaseTable(): FrequenciaDatabaseTable
     {
-        $connection = $this->makeWpdb();
-
-        return new FrequenciaDatabaseTable($connection);
+        return new FrequenciaDatabaseTable();
     }
 
     public function makeListaDeFrequenciaDatabaseTable(): ListaDeFrequenciaDatabaseTable
     {
-        $connection = $this->makeWpdb();
-
-        return new ListaDeFrequenciaDatabaseTable($connection);
+        return new ListaDeFrequenciaDatabaseTable();
     }
 
     public function makeWordPressDatabase(): WordPressDatabase
