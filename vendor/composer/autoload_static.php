@@ -10,7 +10,6 @@ class ComposerStaticInit798d9a957ad3c20afdebd623bfa5dbcf
         'C' => 
         array (
             'CodeCrafts\\ListasDeFrequencia\\Tests\\' => 36,
-            'CodeCrafts\\ListasDeFrequencia\\PublicView\\' => 41,
             'CodeCrafts\\ListasDeFrequencia\\Includes\\' => 39,
             'CodeCrafts\\ListasDeFrequencia\\Database\\' => 39,
             'CodeCrafts\\ListasDeFrequencia\\App\\' => 34,
@@ -22,10 +21,6 @@ class ComposerStaticInit798d9a957ad3c20afdebd623bfa5dbcf
         'CodeCrafts\\ListasDeFrequencia\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
-        ),
-        'CodeCrafts\\ListasDeFrequencia\\PublicView\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/public',
         ),
         'CodeCrafts\\ListasDeFrequencia\\Includes\\' => 
         array (

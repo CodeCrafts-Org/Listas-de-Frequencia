@@ -5,7 +5,6 @@ namespace CodeCrafts\ListasDeFrequencia\Includes;
 use CodeCrafts\ListasDeFrequencia\AdminView\AdminController;
 use CodeCrafts\ListasDeFrequencia\AdminView\AdminView;
 use CodeCrafts\ListasDeFrequencia\App\DependencyInjectionContainers\ApplicationContainer;
-use CodeCrafts\ListasDeFrequencia\PublicView\PublicView;
 
 /**
  * The file that defines the core plugin class
@@ -58,7 +57,7 @@ class Plugin
 
 		$this->setLocale();
 		$this->defineAdminHooks();
-		$this->definePublicHooks();
+		$this->defineApplicationHooks();
 	}
 
 	/**
@@ -79,9 +78,8 @@ class Plugin
 	 */
 	private function defineAdminHooks(): void
 	{
-		$adminController = new AdminController(
-			$this->applicationContainer->makeListasDeFrequenciaService()
-		);
+		$service = $this->applicationContainer->makeListasDeFrequenciaService(); 
+		$adminController = new AdminController($service);
 		$adminView = new AdminView(
 			$this->getName(), 
 			$this->getVersion(),
@@ -91,19 +89,14 @@ class Plugin
 		$this->pluginLoader->addAction('admin_enqueue_scripts', $adminView, 'enqueueScripts');
 		$this->pluginLoader->addAction('admin_menu', $adminView, 'addMenuAndSubmenus');
 	}
-
-	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
-	 */
-	private function definePublicHooks(): void
+	
+	private function defineApplicationHooks(): void
 	{
-		$publicView = new PublicView(
-			$this->getName(),
-			$this->getVersion()
-		);
-		$this->pluginLoader->addAction('wp_enqueue_scripts', $publicView, 'enqueueStyles');
-		$this->pluginLoader->addAction('wp_enqueue_scripts', $publicView, 'enqueueScripts');
+		$service = $this->applicationContainer->makeListasDeFrequenciaService();
+
+		$this->pluginLoader->addAction('create_lista', $service, 'createLista', 1, 1);
+		$this->pluginLoader->addAction('create_frequencia_for_lista', $service, 'createFrequenciaForLista', 1, 2);
+		$this->pluginLoader->addAction('set_presenca_from_frequencia', $service, 'setPresencaFromFrequencia', 1, 2);
 	}
 
 	/**

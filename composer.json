@@ -5,7 +5,6 @@
             "CodeCrafts\\ListasDeFrequencia\\App\\": "app/",
             "CodeCrafts\\ListasDeFrequencia\\Database\\": "database/",
             "CodeCrafts\\ListasDeFrequencia\\Includes\\": "includes/",
-            "CodeCrafts\\ListasDeFrequencia\\PublicView\\": "public/",
             "CodeCrafts\\ListasDeFrequencia\\Tests\\": "tests/"
         }
     },
