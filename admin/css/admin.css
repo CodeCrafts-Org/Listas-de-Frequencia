@@ -2,3 +2,128 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+.main {
+    font-family: 'Segoe UI', 'Roboto Mono';
+}
+
+.module__description {
+    width: 90%;
+    margin: 25px auto 0px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.resource__toolbar {
+    width: 90%;
+    margin: 25px auto 0px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.resource__toolbar .toolbar__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.resource__toolbar .toolbar__buttons .toolbar__button {
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #3892db;
+    color: white;
+}
+
+.resource__toolbar .toolbar__buttons .toolbar__button:hover {
+    background-color: #3ca0f0;
+    transition-duration: 0.2;
+}
+
+.resource__listing {
+    width: 90%;
+    margin: 25px auto 0px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.resource__creation {
+    width: 90%;
+    margin: 25px auto 0px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.listing__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.listing__table th,
+.listing__table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.listing__table th {
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+.listing__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listing__pagination button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.listing__pagination button:hover {
+    background-color: #0056b3;
+}
+
+.listing__pagination span {
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+.item__id--heading {
+    width: 15%;
+}
+
+.item__titulo--heading {
+    width: 40%;
+}
+
+.item__data--heading {
+    width: 20%;
+}
+
+.item__acoes--heading {
+    width: auto;
+}
+
+.item--none {
+    font-weight: lighter;
+    text-align: center;
+    vertical-align: center;
+}
+
+.item__acoes--body div {
+    display: flex;
+    gap: 10px;
+}

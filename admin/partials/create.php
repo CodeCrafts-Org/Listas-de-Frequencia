@@ -1,21 +1,42 @@
-<?php
-
-/**
- * Provide a admin area view for the plugin
- *
- * This file is used to markup the admin-facing aspects of the plugin.
- *
- * @link       http://example.com
- * @since      1.0.0
- *
- * @package    CodeCrafts_Frequencias
- * @subpackage CodeCrafts_Frequencias/admin/partials
- */
-?>
-
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
-<form>
-    <h1>
-        Cadastro de nova Lista
-    </h1>
-</form>
+<main class="main">
+    <div class="module__description">
+        <h1 card="module__title">
+            <a href="?page=listas-de-frequencia">Listas de Frequência</a>
+        </h1>
+    </div>
+    
+    <div class="resource__toolbar">
+        <h2 class="toolbar__context">Novo registro</h2>
+    
+        <div class="toolbar__buttons">
+            <a class="toolbar__button" href="?page=listas-de-frequencia">Voltar para Listagem</a>
+        </div>
+    </div>
+    
+    <div class="resource__creation">
+        <form method="post" id="lista_de_frequencia__form">
+            <fieldset class="form--data">
+                <legend>Insira os dados corretamente</legend>
+                <div>
+                    <label for="titulo">Título: </label>
+                    <input type="text" id="titulo" placeholder="Insira um título para seu registro" />
+                </div>
+                <div>
+                    <label for="listador_de_frequencia_id">Chave do Listador: </label>
+                    <input type="text" id="listador_de_frequencia_id" placeholder="Insira um código único para seu Listador" />
+                </div>
+                <div>
+                    <label for="listador_de_frequencia_type">Tipo do Listador: </label>
+                    <input type="text" id="listador_de_frequencia_type" placeholder="Insira uma categoria para seu Listador" />
+                </div>
+                <div>
+                    <label for="data_de_lancamento">Data de Lançamento: </label>
+                    <input type="date" id="data_de_lancamento" />
+                </div>
+            </fieldset>
+
+            <input type="submit" value="Enviar" />
+        </form>
+    </div>
+</main>
