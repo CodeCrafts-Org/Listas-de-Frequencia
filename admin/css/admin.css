@@ -127,3 +127,41 @@
     display: flex;
     gap: 10px;
 }
+
+.formgroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.formgroup label {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.form--data {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lista_de_frequencia__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.lista_de_frequencia__form--submit {
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #3892db;
+    color: white;
+}
+
+.lista_de_frequencia__form--submit:hover {
+    background-color: #3ca0f0;
+    transition-duration: 0.2;
+    cursor: pointer;
+}

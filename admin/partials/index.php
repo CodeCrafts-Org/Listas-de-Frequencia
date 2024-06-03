@@ -46,7 +46,6 @@
                     <td class="item__acoes--body">
                         <div>
                             <a href="#" data-id="{$id}">Detalhes</a>
-                            <a href="#" data-id="{$id}">Editar</a>
                             <a href="#" data-id="{$id}">Excluir</a>
                         </div>
                     </td>

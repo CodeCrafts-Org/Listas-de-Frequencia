@@ -15,28 +15,29 @@
     </div>
     
     <div class="resource__creation">
-        <form method="post" id="lista_de_frequencia__form">
+        <form method="post" id="lista_de_frequencia__form" class="lista_de_frequencia__form">
             <fieldset class="form--data">
-                <legend>Insira os dados corretamente</legend>
-                <div>
+                <legend>Todos os dados são obrigatórios</legend>
+
+                <div class="formgroup">
                     <label for="titulo">Título: </label>
                     <input type="text" id="titulo" placeholder="Insira um título para seu registro" />
                 </div>
-                <div>
+                <div class="formgroup">
                     <label for="listador_de_frequencia_id">Chave do Listador: </label>
                     <input type="text" id="listador_de_frequencia_id" placeholder="Insira um código único para seu Listador" />
                 </div>
-                <div>
+                <div class="formgroup">
                     <label for="listador_de_frequencia_type">Tipo do Listador: </label>
                     <input type="text" id="listador_de_frequencia_type" placeholder="Insira uma categoria para seu Listador" />
                 </div>
-                <div>
+                <div class="formgroup">
                     <label for="data_de_lancamento">Data de Lançamento: </label>
                     <input type="date" id="data_de_lancamento" />
                 </div>
             </fieldset>
 
-            <input type="submit" value="Enviar" />
+            <input class="lista_de_frequencia__form--submit" type="submit" value="Enviar" />
         </form>
     </div>
 </main>
