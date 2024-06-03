@@ -1,4 +1,4 @@
-export class Observer {
+class Observer {
     #listeners;
 
     constructor(listeners) {

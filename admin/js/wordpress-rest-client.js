@@ -1,4 +1,4 @@
-export class WordPressRestClient {
+class WordPressRestClient {
     async post(endpoint, data) {
         try {
             let response = await fetch(`/wp-json/${endpoint}`, {

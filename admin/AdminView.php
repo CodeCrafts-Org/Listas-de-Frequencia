@@ -44,17 +44,6 @@ class AdminView
 	 */
 	public function enqueueStyles(): void
 	{
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in PluginLoader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The PluginLoader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
 		wp_enqueue_style($this->pluginName, plugin_dir_url( __FILE__ ) . 'css/admin.css', array(), $this->version, 'all');
 	}
 
@@ -63,22 +52,15 @@ class AdminView
 	 */
 	public function enqueueScripts(): void
 	{
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in PluginLoader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The PluginLoader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/admin.js', array(), $this->version, false);
-		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/frequencias.js', array(), $this->version, false);
-		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/listas-de-frequencia.js', array(), $this->version, false);
-		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/observer.js', array(), $this->version, false);
-		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/wordpress-rest-client.js', array(), $this->version, false);
+		wp_register_script("{$this->pluginName}-frequencias", plugin_dir_url( __FILE__ ) . 'js/frequencias.js');
+		wp_register_script("{$this->pluginName}-listas", plugin_dir_url( __FILE__ ) . 'js/listas-de-frequencia.js');
+		wp_register_script("{$this->pluginName}-observer", plugin_dir_url( __FILE__ ) . 'js/observer.js');
+		wp_register_script("{$this->pluginName}-wordpress-rest-client", plugin_dir_url( __FILE__ ) . 'js/wordpress-rest-client.js');
+		
+		wp_enqueue_script("{$this->pluginName}-frequencias");
+		wp_enqueue_script("{$this->pluginName}-listas");
+		wp_enqueue_script("{$this->pluginName}-observer");
+		wp_enqueue_script("{$this->pluginName}-wordpress-rest-client");
 	}
 
 	public function addMenuAndSubmenus(): void

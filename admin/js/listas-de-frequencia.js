@@ -1,6 +1,3 @@
-import { WordPressRestClient } from "./wordpress-rest-client";
-import { Observer } from "./observer";
-
 class CreationDataSupplier {
 	getLatestCreationData() {
 		return {
