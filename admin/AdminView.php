@@ -74,7 +74,11 @@ class AdminView
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), $this->version, false);
+		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/admin.js', array(), $this->version, false);
+		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/frequencias.js', array(), $this->version, false);
+		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/listas-de-frequencia.js', array(), $this->version, false);
+		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/observer.js', array(), $this->version, false);
+		wp_enqueue_script($this->pluginName, plugin_dir_url( __FILE__ ) . 'js/wordpress-rest-client.js', array(), $this->version, false);
 	}
 
 	public function addMenuAndSubmenus(): void
