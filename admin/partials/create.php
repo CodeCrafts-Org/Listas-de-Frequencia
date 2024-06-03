@@ -17,7 +17,9 @@
     <div class="resource__creation">
         <form method="post" id="lista_de_frequencia__form" class="lista_de_frequencia__form">
             <fieldset class="form--data">
-                <legend>Todos os dados são obrigatórios</legend>
+                <legend>
+                    Todos os campos são obrigatórios
+                </legend>
 
                 <div class="formgroup">
                     <label for="titulo">Título: </label>

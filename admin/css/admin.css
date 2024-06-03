@@ -7,6 +7,7 @@
 }
 
 .module__description {
+    background-color: #FCFCFC;
     width: 90%;
     margin: 25px auto 0px auto;
     padding: 20px;
@@ -14,6 +15,7 @@
 }
 
 .resource__toolbar {
+    background-color: #FCFCFC;
     width: 90%;
     margin: 25px auto 0px auto;
     padding: 20px;
@@ -44,6 +46,7 @@
 }
 
 .resource__listing {
+    background-color: #FCFCFC;
     width: 90%;
     margin: 25px auto 0px auto;
     padding: 20px;
@@ -51,6 +54,7 @@
 }
 
 .resource__creation {
+    background-color: #FCFCFC;
     width: 90%;
     margin: 25px auto 0px auto;
     padding: 20px;
@@ -72,7 +76,6 @@
 
 .listing__table th {
     font-weight: bold;
-    background-color: #f2f2f2;
 }
 
 .listing__pagination {
@@ -143,6 +146,10 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.form--data legend {
+    margin-bottom: 12px;
 }
 
 .lista_de_frequencia__form {
