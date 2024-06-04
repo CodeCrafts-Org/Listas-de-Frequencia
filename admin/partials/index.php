@@ -26,33 +26,27 @@
             </thead>
     
             <tbody>
-            <?php if (count($paginated['items']) === 0) {
-                echo '
+            </tbody>
+
+            <template id="empty__items">
                 <tr>
                     <td class="item--none" colspan="4">Não há registros cadastrados</td>
                 </tr>
-                ';
-            } ?>
-            <?php foreach ($paginated['items'] as $lista) {
-                $id = $lista->getId();
-                $titulo = $lista->getTitulo();
-                $dataDeLancamento = $lista->getDataDeLancamento()->format("Y-m-d");
-                
-                echo '
+            </template>
+
+            <template id="item">
                 <tr>
-                    <td class="item__id--body">{$id}</td>
-                    <td class="item__titulo--body">{$titulo}</td>
-                    <td class="item__data--body">{$dataDeLancamento}</td>
+                    <td class="item__id--body"></td>
+                    <td class="item__titulo--body"></td>
+                    <td class="item__data--body"></td>
                     <td class="item__acoes--body">
                         <div>
-                            <a href="#" data-id="{$id}">Detalhes</a>
-                            <a href="#" data-id="{$id}">Excluir</a>
+                            <a href="#" data-id="">Detalhes</a>
+                            <a href="#" data-id="">Excluir</a>
                         </div>
                     </td>
                 </tr>
-                ';
-            } ?>
-            </tbody>
+            </template>
     
             <tfoot>
                 <tr>

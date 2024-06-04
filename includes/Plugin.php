@@ -2,6 +2,8 @@
 
 namespace CodeCrafts\ListasDeFrequencia\Includes;
 
+use CodeCrafts\ListasDeFrequencia\AdminView\AdminApiController;
+use CodeCrafts\ListasDeFrequencia\AdminView\AdminApiRouter;
 use CodeCrafts\ListasDeFrequencia\AdminView\AdminController;
 use CodeCrafts\ListasDeFrequencia\AdminView\AdminView;
 use CodeCrafts\ListasDeFrequencia\App\DependencyInjectionContainers\ApplicationContainer;
@@ -58,6 +60,7 @@ class Plugin
 		$this->setLocale();
 		$this->defineAdminHooks();
 		$this->defineApplicationHooks();
+		$this->defineAdminApiRoutes();
 	}
 
 	/**
@@ -78,12 +81,10 @@ class Plugin
 	 */
 	private function defineAdminHooks(): void
 	{
-		$service = $this->applicationContainer->makeListasDeFrequenciaService(); 
-		$adminController = new AdminController($service);
 		$adminView = new AdminView(
 			$this->getName(), 
 			$this->getVersion(),
-			$adminController,
+			new AdminController(),
 		);
 		$this->pluginLoader->addAction('admin_enqueue_scripts', $adminView, 'enqueueStyles');
 		$this->pluginLoader->addAction('admin_enqueue_scripts', $adminView, 'enqueueScripts');
@@ -97,6 +98,15 @@ class Plugin
 		$this->pluginLoader->addAction('create_lista', $service, 'createLista', 1, 1);
 		$this->pluginLoader->addAction('create_frequencia_for_lista', $service, 'createFrequenciaForLista', 1, 2);
 		$this->pluginLoader->addAction('set_presenca_from_frequencia', $service, 'setPresencaFromFrequencia', 1, 2);
+	}
+	
+	private function defineAdminApiRoutes(): void
+	{
+		$listasDeFrequenciaService = $this->applicationContainer->makeListasDeFrequenciaService();
+		$adminApiController = new AdminApiController($listasDeFrequenciaService);
+		$adminApiRouter = new AdminApiRouter($adminApiController);
+
+		$this->pluginLoader->addAction('rest_api_init', $adminApiRouter, 'registerRoutes', 1, 1);
 	}
 
 	/**

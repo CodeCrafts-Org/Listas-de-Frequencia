@@ -49,6 +49,7 @@ class CreationDataValidator {
 		return true;
 	}
 }
+
 class ListaDeFrequenciaCreationAsyncAction {
 	#wordPressRestClient;
 	#listaDeFrequenciaCreationSuccessObserver;
