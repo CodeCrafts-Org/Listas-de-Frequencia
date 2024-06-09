@@ -2,7 +2,6 @@
 
 namespace CodeCrafts\ListasDeFrequencia\Includes;
 
-use CodeCrafts\ListasDeFrequencia\AdminView\AdminApiController;
 use CodeCrafts\ListasDeFrequencia\AdminView\AdminApiRouter;
 use CodeCrafts\ListasDeFrequencia\AdminView\AdminController;
 use CodeCrafts\ListasDeFrequencia\AdminView\AdminView;
@@ -102,9 +101,7 @@ class Plugin
 	
 	private function defineAdminApiRoutes(): void
 	{
-		$listasDeFrequenciaService = $this->applicationContainer->makeListasDeFrequenciaService();
-		$adminApiController = new AdminApiController($listasDeFrequenciaService);
-		$adminApiRouter = new AdminApiRouter($adminApiController);
+		$adminApiRouter = new AdminApiRouter($this->applicationContainer);
 
 		$this->pluginLoader->addAction('rest_api_init', $adminApiRouter, 'registerRoutes', 1, 1);
 	}
