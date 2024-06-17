@@ -14,7 +14,7 @@
         </div>
     </div>
     
-    <div class="resource__listing">
+    <div class="resource__listing listas-de-frequencia__listing">
         <table class="listing__table">
             <thead>
                 <tr>
@@ -25,24 +25,30 @@
                 </tr>
             </thead>
     
-            <tbody>
+            <tbody class="listing__items">
             </tbody>
 
-            <template id="empty__items">
+            <template id="listing--empty">
                 <tr>
                     <td class="item--none" colspan="4">Não há registros cadastrados</td>
                 </tr>
             </template>
 
-            <template id="item">
+            <template id="listing--error">
+                <tr>
+                    <td class="item--error" colspan="4">Algo inesperado ocorreu! Tente novamente</td>
+                </tr>
+            </template>
+
+            <template id="listing--item">
                 <tr>
                     <td class="item__id--body"></td>
                     <td class="item__titulo--body"></td>
                     <td class="item__data--body"></td>
                     <td class="item__acoes--body">
                         <div>
-                            <a href="#" data-id="">Detalhes</a>
-                            <a href="#" data-id="">Excluir</a>
+                            <button class="item--details">Detalhes</button>
+                            <button class="item--delete">Excluir</button>
                         </div>
                     </td>
                 </tr>
@@ -56,9 +62,6 @@
         </table>
     
         <div class="listing__pagination">
-            <!-- <button id="btn_prev">Anterior</button>
-            <span id="page"></span>
-            <button id="btn_next">Próxima</button> -->
         </div>
     </div>
 </main>

@@ -54,4 +54,13 @@ class WordPressDatabase
     {
         return $this->connection->update($table, $data, $where, null, null);
     }
+
+    /**
+     * @return bool quando houverem erros na inserção (sempre false)
+     * @return int quando for bem-sucedido, indicando o número de linhas afetadas
+     */
+    public function delete(string $table, array $where)
+    {
+        return $this->connection->delete($table, $where, null);
+    }
 }

@@ -52,10 +52,10 @@ class AdminView
 	 */
 	public function enqueueScripts(): void
 	{
-		wp_enqueue_script("{$this->pluginName}-frequencias", plugin_dir_url( __FILE__ ) . 'js/frequencias.js');
-		wp_enqueue_script("{$this->pluginName}-listas", plugin_dir_url( __FILE__ ) . 'js/listas-de-frequencia.js');
-		wp_enqueue_script("{$this->pluginName}-observer", plugin_dir_url( __FILE__ ) . 'js/observer.js');
-		wp_enqueue_script("{$this->pluginName}-wordpress-rest-client", plugin_dir_url( __FILE__ ) . 'js/wordpress-rest-client.js');
+		wp_enqueue_script("{$this->pluginName}-listas-create", plugin_dir_url( __FILE__ ) . 'js/listas-de-frequencia/list.js');
+		wp_enqueue_script("{$this->pluginName}-listas-list", plugin_dir_url( __FILE__ ) . 'js/listas-de-frequencia/create.js');
+		wp_enqueue_script("{$this->pluginName}-observer", plugin_dir_url( __FILE__ ) . 'js/common/observer.js');
+		wp_enqueue_script("{$this->pluginName}-wordpress-rest-client", plugin_dir_url( __FILE__ ) . 'js/common/wordpress-rest-client.js');
 	}
 
 	public function addMenuAndSubmenus(): void

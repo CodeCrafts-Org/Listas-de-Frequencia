@@ -107,4 +107,23 @@ class ListaDeFrequenciaDataAccessObject
 
         return $this->wordPressDatabase->getResult($query);
     }
+
+    /**
+     * @return null quando houverem erros na remoção
+     * @return bool quando indicando sucesso, true para removido, false para não removido
+     */
+    public function deleteSingleById(int $id): ?bool
+    {
+        $primaryKey = $this->listaDeFrequenciaDatabaseTable->getPrimaryKey();
+        $table = $this->listaDeFrequenciaDatabaseTable->getName();
+        $where = [
+            $primaryKey => $id,
+        ];
+        $result = $this->wordPressDatabase->delete($table, $where);
+        if ($result === false) {
+            return null;
+        }
+
+        return $result !== 0;
+    }
 }

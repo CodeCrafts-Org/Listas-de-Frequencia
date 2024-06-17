@@ -73,4 +73,14 @@ class ListaDeFrequenciaRepository implements IListaDeFrequenciaRepository
             'items' => array_map(fn (object $result): ListaDeFrequenciaEntity => new ListaDeFrequenciaEntity($result), $results),
         ];
     }
+
+    public function deleteById(int $id): bool
+    {
+         $result = $this->listaDeFrequenciaDataAccessObject->deleteSingleById($id);
+         if ($result === null) {
+            return false;
+         }
+
+         return $result;
+    }
 }

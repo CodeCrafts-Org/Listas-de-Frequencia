@@ -9,6 +9,7 @@ use CodeCrafts\ListasDeFrequencia\App\DataTransferObjects\ListaDeFrequenciaCreat
 use CodeCrafts\ListasDeFrequencia\App\Entities\FrequenciaEntity;
 use CodeCrafts\ListasDeFrequencia\App\Entities\ListaDeFrequenciaEntity;
 use CodeCrafts\ListasDeFrequencia\App\Exceptions\InvalidDataException;
+use CodeCrafts\ListasDeFrequencia\App\Exceptions\ListaMustBeEmptyException;
 use CodeCrafts\ListasDeFrequencia\App\Exceptions\ListaNotFoundException;
 use CodeCrafts\ListasDeFrequencia\App\ValueObjects\DataDeLancamento;
 use CodeCrafts\ListasDeFrequencia\App\ValueObjects\EntityId;
@@ -105,6 +106,20 @@ class ListasDeFrequenciaService
         }
 
         return $this->frequenciaRepository->update($frequenciaId, ['is_presente' => $isPresente]);
+    }
+
+    public function deleteLista(int $listaId): void
+    {
+        $listaDeFrequencia = $this->listaDeFrequenciaRepository->getById($listaId);
+        if ($listaDeFrequencia === null) {
+            throw new ListaNotFoundException($listaId);
+        }
+        $frequencias = $this->frequenciaRepository->listForListaDeFrequenciaId($listaId);
+        $quantidadeDeFrequencias = count($frequencias);
+        if ($quantidadeDeFrequencias !== 0) {
+            throw new ListaMustBeEmptyException($listaId, $quantidadeDeFrequencias);
+        }
+        $this->listaDeFrequenciaRepository->delete($listaId);
     }
 
     // public function setFrequenciavelAsPresente(int $frequenciavelId, string $frequenciavelType): ?bool

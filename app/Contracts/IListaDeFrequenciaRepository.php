@@ -16,4 +16,6 @@ interface IListaDeFrequenciaRepository
     public function cursorPaginate(int $cursor, int $itemsPerPage);
     
     public function offsetPaginate(int $page, int $itemsPerPage);
+
+    public function deleteById(int $id): bool;
 }
