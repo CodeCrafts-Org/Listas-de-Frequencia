@@ -38,10 +38,8 @@ class WordPressRestClient {
                     'Accept': 'application/json',
                 },
             });
-            let data = response.json();
-            console.log(data);
 
-            return data;
+            return response.json();
         } catch (error) {
             return null;
         }

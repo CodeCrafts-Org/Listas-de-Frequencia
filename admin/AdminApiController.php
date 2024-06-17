@@ -3,6 +3,7 @@
 namespace CodeCrafts\ListasDeFrequencia\AdminView;
 
 use CodeCrafts\ListasDeFrequencia\App\Services\ListasDeFrequenciaService;
+use CodeCrafts\ListasDeFrequencia\App\Exceptions\InvalidDataException;
 
 class AdminApiController
 {
@@ -24,9 +25,22 @@ class AdminApiController
 
     public function createLista(\WP_REST_Request $request): \WP_REST_Response 
     {
-        return new \WP_REST_Response([
-            'listaDeFrequencia' => null,
-        ], 400);
+        try {
+            $lista = $this->listasDeFrequenciaService->createLista([
+                'titulo' => $request->get_param('titulo'),
+                'listador_de_frequencia_id' => $request->get_param('listador_de_frequencia_id'),
+                'listador_de_frequencia_type' => $request->get_param('listador_de_frequencia_type'),
+                'data_de_lancamento' => $request->get_param('data_de_lancamento'),
+            ]);
+
+            return new \WP_REST_Response([
+                'message' => "Lista #{$id} criada com sucesso",
+            ], 201);
+        } catch (InvalidDataException $exception) {
+            return new \WP_REST_Response([
+                'message' => $exception->getMessage(),
+            ], 400);
+        }
     }
 
     public function showLista(\WP_REST_Request $request): \WP_REST_Response 

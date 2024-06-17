@@ -30,7 +30,7 @@ async function handleFetch(page) {
     const params = {
         page: page
     };
-    const paginated = wordPressRestClient.get(endpoint, params);
+    const paginated = await wordPressRestClient.get(endpoint, params);
     if (paginated === null) {
         renderError(listingItems);
     } else if (paginated.items.length === 0) {
