@@ -15,9 +15,11 @@ class AdminApiController
     
     public function indexListas(\WP_REST_Request $request): \WP_REST_Response
     {
-        return new \WP_REST_Response([
-            'listasDeFrequencia' => [],
-        ], 200);
+        $paginated = $this->listasDeFrequenciaService->paginateListas(
+            /* page: */ (int) $request->get_param('page')
+        );
+
+        return new \WP_REST_Response($paginated, 200);
     }
 
     public function createLista(\WP_REST_Request $request): \WP_REST_Response 
