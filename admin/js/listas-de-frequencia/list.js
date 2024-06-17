@@ -90,11 +90,15 @@ function renderItems(body, items) {
         }
         let itemData = itemElement.querySelector('.item__data--body');
         if (itemData !== null) {
-            itemData.innerHTML = item.data;
+            let day = item.data.getDate();
+            let month = item.data.getMonth();
+            let year = item.data.getFullYear();
+            itemData.innerHTML = `${day}/${month}/${year}`;
         }
         let deleteItem = itemElement.querySelector('.item--delete');
         if (deleteItem !== null) {
             deleteItem.addEventListener('click', async function (event) {
+                deleteItem.disabled = true;
                 const wordPressRestClient = new WordPressRestClient();
                 const endpoint = `codecrafts/listas-de-frequencia/v1/listas/${item.id}`;
                 let deleted = await wordPressRestClient.delete(endpoint);
@@ -103,8 +107,9 @@ function renderItems(body, items) {
                 }
                 const row = event.target.closest('tr');
                 if (row !== null) {
-                    handleFetch(1);
+                    await handleFetch(1);
                 }
+                deleteItem.disabled = false;
             });
         }
         body.appendChild(itemElement);
