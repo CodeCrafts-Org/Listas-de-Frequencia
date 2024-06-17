@@ -33,7 +33,7 @@ class WordPressDatabase
 
     public function insertionId(): ?int
     {
-        $insertionId = $this->connection->insert_id;
+        $insertionId = (int) $this->connection->insert_id;
         if ($insertionId === 0) {
             return null;
         }

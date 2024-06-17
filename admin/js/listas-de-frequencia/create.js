@@ -62,7 +62,7 @@ class ListaDeFrequenciaCreationAsyncAction {
     }
 
     async createListaDeFrequencia(titulo, listadorDeFrequenciaId, listadorDeFrequenciaType, dataDeLancamento) {
-        let listaDeFrequencia = await this.#wordPressRestClient.post('codecrafts/listas-de-frequencia/v1/listas/create', {
+        let listaDeFrequencia = await this.#wordPressRestClient.post('codecrafts/listas-de-frequencia/v1/listas', {
             titulo: titulo,
             listador_de_frequencia_id: listadorDeFrequenciaId,
             listador_de_frequencia_type: listadorDeFrequenciaType,
