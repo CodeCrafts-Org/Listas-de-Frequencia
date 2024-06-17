@@ -80,21 +80,30 @@ function renderItems(body, items) {
     }
     items.forEach(function (item) {
         let itemElement = itemTemplate.content.cloneNode(true);
-        itemElement.querySelector('.item__id--body')?.innerHTML = item.id;
-        itemElement.querySelector('.item__titulo--body')?.innerHTML = item.titulo;
-        itemElement.querySelector('.item__data--body')?.innerHTML = item.data;
-        itemElement.querySelector('.item--delete')?.addEventListener('click', async function (event) {
-            const wordPressRestClient = new WordPressRestClient();
-            const endpoint = `codecrafts/listas-de-frequencia/v1/listas/${item.id}`;
-            let deleted = await wordPressRestClient.delete(endpoint);
-            if (deleted === false) {
-                return;
-            }
-            event.target.closest('tr').delete();
-        });
-        itemElement.querySelector('.item--details')?.addEventListener('click', async function (event) {
-            //
-        });
+        let itemId = itemElement.querySelector('.item__id--body');
+        if (itemId !== null) {
+            itemId.innerHTML = item.id;
+        }
+        let itemTitulo = itemElement.querySelector('.item__titulo--body');
+        if (itemTitulo !== null) {
+            itemTitulo.innerHTML = item.titulo;
+        }
+        let itemData = itemElement.querySelector('.item__data--body');
+        if (itemData !== null) {
+            itemData.innerHTML = item.data;
+        }
+        let deleteItem = itemElement.querySelector('.item--delete');
+        if (deleteItem !== null) {
+            deleteItem.addEventListener('click', async function (event) {
+                const wordPressRestClient = new WordPressRestClient();
+                const endpoint = `codecrafts/listas-de-frequencia/v1/listas/${item.id}`;
+                let deleted = await wordPressRestClient.delete(endpoint);
+                if (deleted === false) {
+                    return;
+                }
+                event.target.closest('tr').delete();
+            });
+        }
         body.appendChild(itemElement);
     });
 }

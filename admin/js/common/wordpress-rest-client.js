@@ -44,4 +44,25 @@ class WordPressRestClient {
             return null;
         }
     }
+
+    /**
+     * @template T
+     * @param {string} endpoint 
+     * @returns {Promise<T|null>}
+     */
+    async delete(endpoint) {
+        try {
+            let response = await fetch(`/wp-json/${endpoint}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+            });
+
+            return response.json();
+        } catch (error) {
+            return null;
+        }
+    }
 };
