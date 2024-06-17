@@ -119,7 +119,7 @@ class ListasDeFrequenciaService
         if ($quantidadeDeFrequencias !== 0) {
             throw new ListaMustBeEmptyException($listaId, $quantidadeDeFrequencias);
         }
-        $this->listaDeFrequenciaRepository->delete($listaId);
+        $this->listaDeFrequenciaRepository->deleteById($listaId);
     }
 
     // public function setFrequenciavelAsPresente(int $frequenciavelId, string $frequenciavelType): ?bool

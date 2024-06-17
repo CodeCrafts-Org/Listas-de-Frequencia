@@ -26,7 +26,9 @@ class FrequenciaRepository implements IFrequenciaRepository
 
     public function listForListaDeFrequenciaId(int $listaDeFrequenciaId): array
     {
-        $results = $this->selectManyWhereListaDeFrequenciaIdEqualsTo($listaDeFrequenciaId);
+        $results = $this->frequenciaDataAccessObject->selectManyWhereListaDeFrequenciaIdEqualsTo(
+            $listaDeFrequenciaId
+        );
 
         return array_map(fn (object $result): FrequenciaEntity => new FrequenciaEntity($result), $results);
     }
