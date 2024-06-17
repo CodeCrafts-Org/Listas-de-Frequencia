@@ -90,9 +90,10 @@ function renderItems(body, items) {
         }
         let itemData = itemElement.querySelector('.item__data--body');
         if (itemData !== null) {
-            let day = item.data.getUTCDate();
-            let month = item.data.getUTCMonth();
-            let year = item.data.getUTCFullYear();
+            let date = new Date(item.data);
+            let day = date.getUTCDate();
+            let month = date.getUTCMonth();
+            let year = date.getUTCFullYear();
             itemData.innerHTML = `${day}/${month}/${year}`;
         }
         let deleteItem = itemElement.querySelector('.item--delete');
