@@ -103,7 +103,7 @@ function renderItems(body, items) {
                 }
                 const row = event.target.closest('tr');
                 if (row !== null) {
-                    row.remove();
+                    handleFetch(1);
                 }
             });
         }

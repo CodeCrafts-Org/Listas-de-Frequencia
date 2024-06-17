@@ -45,16 +45,42 @@ class AdminApiController
 
     public function showLista(\WP_REST_Request $request): \WP_REST_Response 
     {
-        return new \WP_REST_Response([
-            'listaDeFrequencia' => null,
-        ], 404);
+        $lista = $this->listasDeFrequenciaService->getLista(
+            /* listaId: */ $request->get_param('id')
+        );
+
+        if ($lista === null) {
+            return new \WP_REST_Response([
+                'message' => 'Lista não encontrada',
+                'listaDeFrequencia' => null,
+            ], 404);
+        } else {
+            return new \WP_REST_Response([
+                'message' => "Lista #{$id} encontrada com sucesso",
+                'listaDeFrequencia' => $lista,
+            ], 200);
+        }
     }
 
     public function deleteLista(\WP_REST_Request $request): \WP_REST_Response 
     {
-        return new \WP_REST_Response([
-            'deleted' => null,
-        ], 404);
+        try {
+            $this->listasDeFrequenciaService->deleteLista(
+                /* listaId: */ $request->get_param('id')
+            );
+
+            return new \WP_REST_Response([
+                'deleted' => true,
+            ], 200);
+        } catch (ListaNotFoundException $exception) {
+            return new \WP_REST_Response([
+                'message' => $exception->getMessage(),
+            ], 404);
+        } catch (ListaMustBeEmptyException $exception) {
+            return new \WP_REST_Response([
+                'message' => $exception->getMessage(),
+            ], 400);
+        }
     }
 
     public function createFrequenciaForLista(\WP_REST_Request $request): \WP_REST_Response 
