@@ -79,7 +79,10 @@ class ListaDeFrequenciaEntity implements JsonSerializable
         return [
             'id' => $this->getId(),
             'titulo' => $this->getTitulo(),
-            'data' => $this->getDataDeLancamento()->format('c'),
+            'data' => [
+                'iso' => $this->getDataDeLancamento()->format('c'),
+                'formatted' => $this->getDataDeLancamento()->format('d/m/Y'),
+            ],
             'parentId' => $this->getListadorDeFrequenciaId(),
             'parentType' => $this->getListadorDeFrequenciaType(),
         ];

@@ -90,11 +90,7 @@ function renderItems(body, items) {
         }
         let itemData = itemElement.querySelector('.item__data--body');
         if (itemData !== null) {
-            let date = new Date(item.data);
-            let day = date.getUTCDate();
-            let month = date.getUTCMonth();
-            let year = date.getUTCFullYear();
-            itemData.innerHTML = `${day}/${month}/${year}`;
+            itemData.innerHTML = item.data.formatted;
         }
         let deleteItem = itemElement.querySelector('.item--delete');
         if (deleteItem !== null) {
