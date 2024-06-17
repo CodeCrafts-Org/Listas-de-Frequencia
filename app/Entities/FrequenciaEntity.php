@@ -3,8 +3,9 @@
 namespace CodeCrafts\ListasDeFrequencia\App\Entities;
 
 use DateTimeImmutable;
+use JsonSerializable;
 
-class FrequenciaEntity
+class FrequenciaEntity implements JsonSerializable
 {
     protected object $wordPressDatabaseResult;
 
@@ -34,9 +35,9 @@ class FrequenciaEntity
         return $this->wordPressDatabaseResult->titulo;
     }
 
-    public function getFrequenciavelId(): int
+    public function getFrequenciavelId(): string
     {
-        return (int) $this->wordPressDatabaseResult->frequenciavel_id;
+        return $this->wordPressDatabaseResult->frequenciavel_id;
     }
 
     public function getFrequenciavelType(): string
@@ -77,4 +78,16 @@ class FrequenciaEntity
 
         return $other->getId() === $this->getId();
     }
+
+     public function jsonSerialize(): array
+     {
+        return [
+            'id' => $this->getId(),
+            'titulo' => $this->getTitulo(),
+            'listaId' => $this->getListaDeFrequenciaId(),
+            'estaPresente' => $this->getIsPresente(),
+            'parentId' => $this->getFrequenciavelId(),
+            'parentType' => $this->getFrequenciavelType(),
+        ];
+     }
 }

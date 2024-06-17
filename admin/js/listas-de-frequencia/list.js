@@ -101,7 +101,10 @@ function renderItems(body, items) {
                 if (deleted === false) {
                     return;
                 }
-                event.target.closest('tr').delete();
+                const row = event.target.closest('tr');
+                if (row !== null) {
+                    row.remove();
+                }
             });
         }
         body.appendChild(itemElement);
