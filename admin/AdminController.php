@@ -7,7 +7,7 @@ class AdminController
     public function query()
     {
         $queryVar = get_query_var(
-            /* key: */ 'lista-id', 
+            /* key: */ 'id', 
             /* default: */ null
         );
         if ($queryVar === null) {

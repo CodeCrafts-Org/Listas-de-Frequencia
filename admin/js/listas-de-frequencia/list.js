@@ -111,7 +111,7 @@ function renderItems(body, items) {
         }
         let detailItem = itemElement.querySelector('.item--details');
         if (detailItem !== null) {
-            detailItem.href = `?page=listas-de-frequencia&lista-id=${item.id}`;
+            detailItem.href = `?page=listas-de-frequencia&id=${item.id}`;
         }
         body.appendChild(itemElement);
     });
