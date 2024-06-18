@@ -4,12 +4,21 @@ namespace CodeCrafts\ListasDeFrequencia\AdminView;
 
 class AdminController
 {
-    public function index()
+    public function query()
     {
-        include __DIR__ . '/partials/listas-de-frequencia/index.php';
+        $queryVar = get_query_var(
+            /* key: */ 'lista-id', 
+            /* default: */ null
+        );
+        if ($queryVar === null) {
+            include __DIR__ . '/partials/listas-de-frequencia/index.php';
+        } else {
+            $listaId = (int) $queryVar;
+            include __DIR__ . '/partials/listas-de-frequencia/show.php';
+        }
     }
 
-    public function create()
+    public function command()
     {
         include __DIR__ . '/partials/listas-de-frequencia/create.php';
     }

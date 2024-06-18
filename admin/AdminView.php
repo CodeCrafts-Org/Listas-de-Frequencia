@@ -60,7 +60,7 @@ class AdminView
 
 	public function addMenuAndSubmenus(): void
 	{
-		add_menu_page('Listas de Frequência', 'Listas de Frequência', 'administrator', 'listas-de-frequencia', [$this->adminController, 'index']);
-		add_submenu_page('listas-de-frequencia', 'Listas de Frequência - Cadastro', 'Cadastrar Nova Lista', 'administrator', 'cadastro', [$this->adminController, 'create']);
+		add_menu_page('Listas de Frequência', 'Listas de Frequência', 'administrator', 'listas-de-frequencia', [$this->adminController, 'query']);
+		add_submenu_page('listas-de-frequencia', 'Listas de Frequência - Cadastro', 'Cadastrar Nova Lista', 'administrator', 'listas-de-frequencia-command', [$this->adminController, 'command']);
 	}
 }

@@ -109,6 +109,10 @@ function renderItems(body, items) {
                 deleteItem.disabled = false;
             });
         }
+        let detailItem = itemElement.querySelector('.item--details');
+        if (detailItem !== null) {
+            detailItem.href = `?page=lista-de-frequencia&lista-id=${item.id}`;
+        }
         body.appendChild(itemElement);
     });
 }

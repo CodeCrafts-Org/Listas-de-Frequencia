@@ -10,7 +10,7 @@
         <h2 class="toolbar__context">Listagem</h2>
     
         <div class="toolbar__buttons">
-            <a class="toolbar__button" href="?page=cadastro">Adicionar Nova Lista</a>
+            <a class="toolbar__button" href="?page=listas-de-frequencia-command">Adicionar Nova Lista</a>
         </div>
     </div>
     
