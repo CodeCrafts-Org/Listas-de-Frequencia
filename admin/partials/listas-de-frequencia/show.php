@@ -1,5 +1,5 @@
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
-<main class="main" data-id="<? echo $listaId; ?>">
+<main class="main" data-id="<?= $listaId ?>">
     <div class="module__description">
         <h1 card="module__title">
             <a href="?page=listas-de-frequencia">Listas de Frequência</a>
@@ -7,7 +7,7 @@
     </div>
     
     <div class="resource__toolbar">
-        <h2 class="toolbar__context">Detalhes do registro #<? echo $listaId; ?></h2>
+        <h2 class="toolbar__context">Detalhes do registro #<?= $listaId ?></h2>
     
         <div class="toolbar__buttons">
             <a class="toolbar__button" href="?page=listas-de-frequencia-command">Adicionar Nova Lista</a>
