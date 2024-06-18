@@ -47,7 +47,7 @@
                     <td class="item__data--body"></td>
                     <td class="item__acoes--body">
                         <div>
-                            <button class="item--details">Detalhes</button>
+                            <a class="item--details">Detalhes</a>
                             <button class="item--delete">Excluir</button>
                         </div>
                     </td>
