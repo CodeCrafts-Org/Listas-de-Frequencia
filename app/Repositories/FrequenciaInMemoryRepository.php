@@ -43,6 +43,11 @@ class FrequenciaInMemoryRepository implements IFrequenciaRepository
         return null;
     }
 
+    public function getByParent(string $parentId, string $parentType): ?FrequenciaEntity
+    {
+        return null;
+    }
+
     public function create(FrequenciaCreation $frequenciaCreation): ?FrequenciaEntity
     {
         $this->autoincrement += 1;

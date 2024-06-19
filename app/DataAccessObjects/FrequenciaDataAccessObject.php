@@ -140,4 +140,12 @@ class FrequenciaDataAccessObject
             
         return $this->wordPressDatabase->update($table, $data, $where);
     }
+
+    public function selectSingleByParentIdAndParentType(string $parentId, string $parentType): ?object
+    {
+        $table = $this->listaDeFrequenciaDatabaseTable->getName();
+        $query = "SELECT * FROM {$table} WHERE frequenciavel_id = '{$parentId}' AND frequenciavel_type = '{$parentType}'";
+
+        return $this->wordPressDatabase->getResult($query);
+    }
 }

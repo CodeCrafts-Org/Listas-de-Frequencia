@@ -43,6 +43,16 @@ class FrequenciaRepository implements IFrequenciaRepository
         return new FrequenciaEntity($result);
     }
 
+    public function getByParent(string $parentId, string $parentType): ?FrequenciaEntity
+    {
+        $result = $this->frequenciaDataAccessObject->selectSingleByParentIdAndParentType($parentId, $parentType);
+        if ($result === null) {
+            return null;
+        }
+
+        return new FrequenciaEntity($result);
+    }
+
     public function create(FrequenciaCreation $frequenciaCreation): ?FrequenciaEntity
     {
         $frequenciaId = $this->frequenciaDataAccessObject->insert($frequenciaCreation);

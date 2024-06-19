@@ -66,6 +66,18 @@ class ListasDeFrequenciaService
         ];
     }
 
+    public function getFrequenciaByParent(string $parentId, string $parentType): ?array
+    {
+        $frequencia = $this->frequenciaRepository->getByParent($parentId, $parentType);
+        if ($frequencia === null) {
+            return null;
+        }
+
+        return [
+            'frequencia' => $this->frequencia,
+        ];
+    }
+
     /**
      * @throws InvalidDataException quando houverem erros quanto aos dados de criação
      */

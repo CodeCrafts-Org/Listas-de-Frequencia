@@ -13,6 +13,8 @@ interface IFrequenciaRepository
     
     public function getById(int $id): ?FrequenciaEntity;
     
+    public function getByParent(string $parentId, string $parentType): ?FrequenciaEntity;
+    
     public function create(FrequenciaCreation $frequenciaCreation): ?FrequenciaEntity;
     
     public function update(int $id, array $isPresente): ?bool;
