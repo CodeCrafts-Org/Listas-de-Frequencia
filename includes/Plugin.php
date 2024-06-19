@@ -114,7 +114,7 @@ class Plugin
 				return null;
 			}
 		};
-		$this->pluginLoader->addFilter('get_lista_by_parent', $listaByParentGetter, 'getListaByParent', 1, 2);
+		$this->pluginLoader->addFilter('get_lista_by_parent', $listaByParentGetter, 'getListaByParent', 1, 3);
 	}
 	
 	private function defineAdminApiRoutes(): void
