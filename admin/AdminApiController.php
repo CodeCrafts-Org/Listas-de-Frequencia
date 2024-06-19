@@ -91,6 +91,10 @@ class AdminApiController
 
     public function updatePresencaForFrequencia(\WP_REST_Request $request): \WP_REST_Response 
     {
+        $result = $this->listasDeFrequenciaService->setPresencaFromFrequencia(
+                /* frequenciaId: */ $request->get_param('id'),
+                /* isPresente: */ $request->get_param('presente')
+        );
         return new \WP_REST_Response([
             'updated' => null,
         ], 404);

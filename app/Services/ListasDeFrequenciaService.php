@@ -75,6 +75,7 @@ class ListasDeFrequenciaService
 
         return [
             'frequencia' => $this->frequencia,
+            'listaDeFrequencia' => [],
         ];
     }
 
@@ -147,7 +148,7 @@ class ListasDeFrequenciaService
 
     public function deleteFrequencia(int $frequenciaId): bool
     {
-        $this->frequenciaRepository->deleteById($frequenciaId);
+        return $this->frequenciaRepository->deleteById($frequenciaId);
     }
 
     // public function setFrequenciavelAsPresente(int $frequenciavelId, string $frequenciavelType): ?bool

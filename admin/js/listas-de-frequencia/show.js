@@ -85,6 +85,21 @@ function renderDetailsItems(tableBody, items) {
         if (itemTitulo !== null) {
             itemTitulo.innerHTML = item.titulo;
         }
+        let itemPresenca = itemElement.querySelector('.item__presenca--body');
+        if (itemPresenca !== null) {
+            itemPresenca.addEventListener('click', async function (event) {
+                itemPresenca.disabled = true;
+                const wordPressRestClient = new WordPressRestClient();
+                const endpoint = `codecrafts/listas-de-frequencia/v1/frequencias/${item.id}/presenca`;
+                let updated = await wordPressRestClient.patch(endpoint, {
+                    presenca: itemPresenca.checked
+                });
+                if (updated === false) {
+                    itemPresenca.checked = !itemPresenca.checked;
+                }
+                itemPresenca.disabled = false;
+            });
+        }
         tableBody.appendChild(itemElement);
     });
 }
