@@ -97,23 +97,7 @@ class Plugin
 		$this->pluginLoader->addAction('create_lista', $service, 'createLista', 1, 1);
 		$this->pluginLoader->addAction('create_frequencia_for_lista', $service, 'createFrequenciaForLista', 1, 2);
 		$this->pluginLoader->addAction('set_presenca_from_frequencia', $service, 'setPresencaFromFrequencia', 1, 2);
-
-		$listaByParentGetter = new class($service)
-		{
-			protected $service;
-
-			public function __construct($service) {
-				$this->service = $service;
-			}
-			public function getListaByParent($parentId, $parentType) {
-				echo print_r([$parentId], true);
-				echo print_r([$parentType], true);
-				die();
-
-				return null;
-			}
-		};
-		$this->pluginLoader->addFilter('get_lista_by_parent', $listaByParentGetter, 'getListaByParent', 1, 2);
+		$this->pluginLoader->addFilter('get_lista_by_parent', $service, 'getListaByParent', 1, 2);
 	}
 	
 	private function defineAdminApiRoutes(): void

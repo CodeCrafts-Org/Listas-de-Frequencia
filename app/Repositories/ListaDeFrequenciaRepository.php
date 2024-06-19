@@ -34,7 +34,7 @@ class ListaDeFrequenciaRepository implements IListaDeFrequenciaRepository
 
     public function getByParent(string $parentId, string $parentType): ?ListaDeFrequenciaEntity
     {
-        $result = $this->listaDeFrequenciaDataAccessObject->selectSingleByParentIdAndParentType($id);
+        $result = $this->listaDeFrequenciaDataAccessObject->selectSingleByParentIdAndParentType($parentId, $parentType);
         if ($result === null) {
             return null;
         }

@@ -111,7 +111,7 @@ class ListaDeFrequenciaDataAccessObject
     public function selectSingleByParentIdAndParentType(string $parentId, string $parentType): ?object
     {
         $table = $this->listaDeFrequenciaDatabaseTable->getName();
-        $query = "SELECT * FROM {$table} WHERE listador_de_frequencia_id = {$parentId} AND listador_de_frequencia_type = {$parentType}";
+        $query = "SELECT * FROM {$table} WHERE listador_de_frequencia_id = '{$parentId}' AND listador_de_frequencia_type = '{$parentType}'";
 
         return $this->wordPressDatabase->getResult($query);
     }
