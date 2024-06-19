@@ -91,10 +91,10 @@ function renderDetailsItems(tableBody, items) {
                 itemPresenca.disabled = true;
                 const wordPressRestClient = new WordPressRestClient();
                 const endpoint = `codecrafts/listas-de-frequencia/v1/frequencias/${item.id}/presenca`;
-                let updated = await wordPressRestClient.patch(endpoint, {
+                let result = await wordPressRestClient.patch(endpoint, {
                     presenca: itemPresenca.checked
                 });
-                if (updated === false) {
+                if (result === null || result.updated === false) {
                     itemPresenca.checked = !itemPresenca.checked;
                 }
                 itemPresenca.disabled = false;

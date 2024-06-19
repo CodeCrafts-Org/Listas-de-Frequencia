@@ -91,12 +91,20 @@ class AdminApiController
 
     public function updatePresencaForFrequencia(\WP_REST_Request $request): \WP_REST_Response 
     {
-        $result = $this->listasDeFrequenciaService->setPresencaFromFrequencia(
+        $resultado = $this->listasDeFrequenciaService->setPresencaFromFrequencia(
                 /* frequenciaId: */ $request->get_param('id'),
                 /* isPresente: */ $request->get_param('presente')
         );
-        return new \WP_REST_Response([
-            'updated' => null,
-        ], 404);
+
+        if ($resultado === null) {
+            return new \WP_REST_Response([
+                'message' => 'Frequência não encontrada',
+                'updated' => null,
+            ], 404);
+        } else {
+            return new \WP_REST_Response(array_merge($resultado, [
+                'updated' => $resultado,
+            ]), 200);
+        }
     }
 }

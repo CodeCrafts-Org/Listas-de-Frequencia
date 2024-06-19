@@ -48,6 +48,29 @@ class WordPressRestClient {
     /**
      * @template T
      * @param {string} endpoint 
+     * @param {Record<string, string>|undefined} data = undefined
+     * @returns {Promise<T|null>}
+     */
+    async patch(endpoint, data = undefined) {
+        try {
+            let response = await fetch(`/wp-json/${endpoint}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            return response.json();
+        } catch (error) {
+            return null;
+        }
+    }
+
+    /**
+     * @template T
+     * @param {string} endpoint 
      * @returns {Promise<T|null>}
      */
     async delete(endpoint) {
