@@ -105,11 +105,16 @@ class Plugin
 			public function __construct($service) {
 				$this->service = $service;
 			}
-			public function getListaByParent(&$result, string $parentId, string $parentType): void {
-				$result = $this->service->getListaByParent($parentId, $parentType);
+			public function getListaByParent($result, $parentId, $parentType) {
+				echo print_r($result, true);
+				echo print_r($parentId, true);
+				echo print_r($parentType, true);
+				die();
+
+				return null;
 			}
 		};
-		$this->pluginLoader->addAction('get_lista_by_parent', $listaByParentGetter, 'getListaByParent', 1, 3);
+		$this->pluginLoader->addFilter('get_lista_by_parent', $listaByParentGetter, 'getListaByParent', 1, 2);
 	}
 	
 	private function defineAdminApiRoutes(): void
