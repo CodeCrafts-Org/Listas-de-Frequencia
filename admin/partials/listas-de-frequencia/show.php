@@ -47,7 +47,8 @@
             <thead>
                 <tr>
                     <th class="item__id--heading">ID</th>
-                    <th class="item__titulo--heading">Titulo</th>
+                    <th class="item__presenca--heading">Presença</th>
+                    <th class="item__titulo--heading">Título</th>
                 </tr>
             </thead>
     
@@ -56,13 +57,13 @@
 
             <template id="listing--error">
                 <tr>
-                    <td class="item--error" colspan="2">Algo inesperado ocorreu! Tente novamente</td>
+                    <td class="item--error" colspan="3">Algo inesperado ocorreu! Tente novamente</td>
                 </tr>
             </template>
 
             <template id="listing--empty">
                 <tr>
-                    <td class="item--none" colspan="2">Não há frequências cadastradas</td>
+                    <td class="item--none" colspan="3">Não há frequências cadastradas</td>
                 </tr>
             </template>
 
@@ -70,12 +71,13 @@
                 <tr>
                     <td class="item__id--body"></td>
                     <td class="item__titulo--body"></td>
+                    <td><input class="item__presenca--body" type="checkbox"/></td>
                 </tr>
             </template>
     
             <tfoot>
                 <tr>
-                    <td colspan="2"></td>
+                    <td colspan="3"></td>
                 </tr>
             </tfoot>
         </table>
