@@ -2,19 +2,19 @@
  * @param {Event} event 
  * @return {Promise<void>}
  */
-async function handleLoad(event) {
+async function handleListingLoad(event) {
     const container = document.querySelector('.listas-de-frequencia__listing');
     if (container === null) {
         return;
     }
-    await handleFetch(1);
+    await handleListingFetch(1);
 }
 
 /**
  * @param {number} page
  * @return {Promise<void>}
  */
-async function handleFetch(page) {
+async function handleListingFetch(page) {
     const listingItems = document.querySelector('.listing__items');
     if (listingItems === null) {
         return;
@@ -32,12 +32,12 @@ async function handleFetch(page) {
     };
     const paginated = await wordPressRestClient.get(endpoint, params);
     if (paginated === null) {
-        renderError(listingItems);
+        renderListingError(listingItems);
     } else if (paginated.items.length === 0) {
-        renderEmpty(listingItems);
+        renderListingEmpty(listingItems);
     } else {
-        renderItems(listingItems, paginated.items);
-        renderPaginator(listingPagination, paginated.totalPages, page);
+        renderListingItems(listingItems, paginated.items);
+        renderListingPaginator(listingPagination, paginated.totalPages, page);
     }
     return;
 }
@@ -46,7 +46,7 @@ async function handleFetch(page) {
  * @param {Element} body 
  * @return {void}
  */
-function renderError(body) {
+function renderListingError(body) {
     const errorTemplate = document.getElementById('listing--error');
     if (errorTemplate === null) {
         return;
@@ -59,7 +59,7 @@ function renderError(body) {
  * @param {Element} body 
  * @return {void}
  */
-function renderEmpty(body) {
+function renderListingEmpty(body) {
     const emptyTemplate = document.getElementById('listing--empty');
     if (emptyTemplate === null) {
         return;
@@ -73,7 +73,7 @@ function renderEmpty(body) {
  * @param {Array<any>} items
  * @return {void}
  */
-function renderItems(body, items) {
+function renderListingItems(body, items) {
     const itemTemplate = document.getElementById('listing--item');
     if (itemTemplate === null) {
         return;
@@ -104,7 +104,7 @@ function renderItems(body, items) {
                 }
                 const row = event.target.closest('tr');
                 if (row !== null) {
-                    await handleFetch(1);
+                    await handleListingFetch(1);
                 }
                 deleteItem.disabled = false;
             });
@@ -123,7 +123,7 @@ function renderItems(body, items) {
  * @param {number} currentPage
  * @return {void}
  */
-function renderPaginator(container, totalPages, currentPage) {
+function renderListingPaginator(container, totalPages, currentPage) {
     if (totalPages <= 1) {
         return;
     }
@@ -134,7 +134,7 @@ function renderPaginator(container, totalPages, currentPage) {
     if (startPage > 1) {
         const firstButton = document.createElement('button');
         firstButton.textContent = 'Primeira página';
-        firstButton.addEventListener('click', () => handleFetch(1));
+        firstButton.addEventListener('click', () => handleListingFetch(1));
         container.appendChild(firstButton);
         startPage++;
     }
@@ -148,7 +148,7 @@ function renderPaginator(container, totalPages, currentPage) {
         const pageButton = document.createElement('button');
         pageButton.textContent = page;
         pageButton.classList.toggle('active', page === currentPage);
-        pageButton.addEventListener('click', () => handleFetch(page));
+        pageButton.addEventListener('click', () => handleListingFetch(page));
         container.appendChild(pageButton);
     }
     if (endPage < totalPages - 1) {
@@ -160,9 +160,9 @@ function renderPaginator(container, totalPages, currentPage) {
     if (endPage < totalPages) {
         const lastButton = document.createElement('button');
         lastButton.textContent = 'Última página';
-        lastButton.addEventListener('click', () => handleFetch(totalPages));
+        lastButton.addEventListener('click', () => handleListingFetch(totalPages));
         container.appendChild(lastButton);
     }
 }
 
-window.addEventListener('load', handleLoad);
+window.addEventListener('load', handleListingLoad);

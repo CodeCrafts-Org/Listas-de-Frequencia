@@ -2,20 +2,20 @@
  * @param {Event} event 
  * @return {Promise<void>}
  */
-async function handleLoad(event) {
+async function handleDetailsLoad(event) {
     const container = document.querySelector('.lista-de-frequencia__details');
     if (container === null) {
         return;
     }
     const listaId = container.dataset.id;
-    await handleFetch(listaId);
+    await handleDetailsFetch(listaId);
 }
 
 /**
  * @param {number} id
  * @return {Promise<void>}
  */
-async function handleFetch(id) {
+async function handleDetailsFetch(id) {
     const listaData = document.querySelector('.form--data');
     if (listaData === null) {
         return;
@@ -29,11 +29,11 @@ async function handleFetch(id) {
     const endpoint = `codecrafts/listas-de-frequencia/v1/listas/${id}`;
     const details = await wordPressRestClient.get(endpoint);
     if (details === null) {
-        renderError(frequenciasListing);
+        renderDetailsError(frequenciasListing);
     } else if (details.frequencias.length === 0) {
-        renderEmpty(frequenciasListing);
+        renderDetailsEmpty(frequenciasListing);
     } else {
-        renderItems(frequenciasListing, details.frequencias);
+        renderDetailsItems(frequenciasListing, details.frequencias);
     }
     renderDetails(listaData, details.listaDeFrequencia);
     return;
@@ -43,7 +43,7 @@ async function handleFetch(id) {
  * @param {Element} tableBody 
  * @return {void}
  */
-function renderError(tableBody) {
+function renderDetailsError(tableBody) {
     const errorTemplate = document.getElementById('listing--error');
     if (errorTemplate === null) {
         return;
@@ -56,7 +56,7 @@ function renderError(tableBody) {
  * @param {Element} tableBody 
  * @return {void}
  */
-function renderEmpty(tableBody) {
+function renderDetailsEmpty(tableBody) {
     const emptyTemplate = document.getElementById('listing--empty');
     if (emptyTemplate === null) {
         return;
@@ -70,7 +70,7 @@ function renderEmpty(tableBody) {
  * @param {Array<any>} items
  * @return {void}
  */
-function renderItems(tableBody, items) {
+function renderDetailsItems(tableBody, items) {
     const itemTemplate = document.getElementById('listing--item');
     if (itemTemplate === null) {
         return;
@@ -80,6 +80,10 @@ function renderItems(tableBody, items) {
         let itemId = itemElement.querySelector('.item__id--body');
         if (itemId !== null) {
             itemId.innerHTML = item.id;
+        }
+        let itemTitulo = itemElement.querySelector('.item__titulo--body');
+        if (itemTitulo !== null) {
+            itemTitulo.innerHTML = item.titulo;
         }
         tableBody.appendChild(itemElement);
     });
@@ -115,4 +119,4 @@ function renderDetails(fieldSet, details) {
     }
 }
 
-window.addEventListener('load', handleLoad);
+window.addEventListener('load', handleDetailsLoad);

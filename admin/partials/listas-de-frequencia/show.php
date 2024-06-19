@@ -47,6 +47,7 @@
             <thead>
                 <tr>
                     <th class="item__id--heading">ID</th>
+                    <th class="item__titulo--heading">Titulo</th>
                 </tr>
             </thead>
     
@@ -55,25 +56,26 @@
 
             <template id="listing--error">
                 <tr>
-                    <td class="item--error" colspan="1">Algo inesperado ocorreu! Tente novamente</td>
+                    <td class="item--error" colspan="2">Algo inesperado ocorreu! Tente novamente</td>
                 </tr>
             </template>
 
             <template id="listing--empty">
                 <tr>
-                    <td class="item--none" colspan="1">Não há frequências cadastradas</td>
+                    <td class="item--none" colspan="2">Não há frequências cadastradas</td>
                 </tr>
             </template>
 
             <template id="listing--item">
                 <tr>
                     <td class="item__id--body"></td>
+                    <td class="item__titulo--body"></td>
                 </tr>
             </template>
     
             <tfoot>
                 <tr>
-                    <td colspan="1"></td>
+                    <td colspan="2"></td>
                 </tr>
             </tfoot>
         </table>
