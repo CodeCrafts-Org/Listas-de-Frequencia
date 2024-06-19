@@ -111,7 +111,7 @@ function renderDetails(fieldSet, details) {
     if (dataDeLancamento !== null) {
         const parsed = details.data.iso.split(/\D+/);
         const utc = Date.UTC(parsed[0], --parsed[1], parsed[2], parsed[3], parsed[4], parsed[5], parsed[6]);
-        dataDeLancamento.value = new Date(utc);
+        dataDeLancamento.valueAsDate = new Date(utc);
     }
 }
 
