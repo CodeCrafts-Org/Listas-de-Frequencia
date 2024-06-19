@@ -36,6 +36,11 @@ class ListaDeFrequenciaInMemoryRepository implements IListaDeFrequenciaRepositor
         return null;
     }
 
+    public function getByParent(string $parentId, string $parentType): ?ListaDeFrequenciaEntity
+    {
+        return null;
+    }
+
     public function create(ListaDeFrequenciaCreation $listaDeFrequenciaCreation): ?ListaDeFrequenciaEntity
     {
         $this->autoincrement += 1;

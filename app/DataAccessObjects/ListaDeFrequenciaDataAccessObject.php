@@ -108,6 +108,14 @@ class ListaDeFrequenciaDataAccessObject
         return $this->wordPressDatabase->getResult($query);
     }
 
+    public function selectSingleByParentIdAndParentType(string $parentId, string $parentType): ?object
+    {
+        $table = $this->listaDeFrequenciaDatabaseTable->getName();
+        $query = "SELECT * FROM {$table} WHERE listador_de_frequencia_id = {$parentId} AND listador_de_frequencia_type = {$parentType}";
+
+        return $this->wordPressDatabase->getResult($query);
+    }
+
     /**
      * @return null quando houverem erros na remoção
      * @return bool quando indicando sucesso, true para removido, false para não removido

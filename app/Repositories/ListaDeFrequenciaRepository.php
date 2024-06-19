@@ -32,6 +32,16 @@ class ListaDeFrequenciaRepository implements IListaDeFrequenciaRepository
         return new ListaDeFrequenciaEntity($result);
     }
 
+    public function getByParent(string $parentId, string $parentType): ?ListaDeFrequenciaEntity
+    {
+        $result = $this->listaDeFrequenciaDataAccessObject->selectSingleByParentIdAndParentType($id);
+        if ($result === null) {
+            return null;
+        }
+
+        return new ListaDeFrequenciaEntity($result);
+    }
+
     public function create(ListaDeFrequenciaCreation $listaDeFrequenciaCreation): ?ListaDeFrequenciaEntity
     {
         $listaDeFrequenciaId = $this->listaDeFrequenciaDataAccessObject->insert($listaDeFrequenciaCreation);

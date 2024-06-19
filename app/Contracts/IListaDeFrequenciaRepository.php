@@ -11,6 +11,8 @@ interface IListaDeFrequenciaRepository
     
     public function getById(int $id): ?ListaDeFrequenciaEntity;
     
+    public function getByParent(string $parentId, string $parentType): ?ListaDeFrequenciaEntity;
+    
     public function create(ListaDeFrequenciaCreation $listaDeFrequenciaCreation): ?ListaDeFrequenciaEntity;
     
     public function cursorPaginate(int $cursor, int $itemsPerPage);

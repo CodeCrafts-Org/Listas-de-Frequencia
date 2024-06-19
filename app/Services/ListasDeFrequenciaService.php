@@ -52,6 +52,20 @@ class ListasDeFrequenciaService
         ];
     }
 
+    public function getListaByParent(string $parentId, string $parentType): ?array
+    {
+        $listaDeFrequencia = $this->listaDeFrequenciaRepository->getByParent($parentId, $parentType);
+        if ($listaDeFrequencia === null) {
+            return null;
+        }
+        $listaId = $listaDeFrequencia->getId();
+
+        return [
+            'listaDeFrequencia' => $listaDeFrequencia,
+            'frequencias' => $this->frequenciaRepository->listForListaDeFrequenciaId($listaId),
+        ];
+    }
+
     /**
      * @throws InvalidDataException quando houverem erros quanto aos dados de criação
      */
