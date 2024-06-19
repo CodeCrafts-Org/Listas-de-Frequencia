@@ -87,7 +87,7 @@ function renderDetailsItems(tableBody, items) {
         }
         let itemPresenca = itemElement.querySelector('.item__presenca--body');
         if (itemPresenca !== null) {
-            itemTitulo.checked = item.estaPresente;
+            itemPresenca.checked = item.estaPresente;
             itemPresenca.addEventListener('click', async function (event) {
                 itemPresenca.disabled = true;
                 const wordPressRestClient = new WordPressRestClient();

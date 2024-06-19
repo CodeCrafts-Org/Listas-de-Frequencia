@@ -102,9 +102,9 @@ class AdminApiController
                 'updated' => null,
             ], 404);
         } else {
-            return new \WP_REST_Response(array_merge($resultado, [
+            return new \WP_REST_Response([
                 'updated' => $resultado,
-            ]), 200);
+            ], 200);
         }
     }
 }
