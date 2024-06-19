@@ -70,8 +70,8 @@
             <template id="listing--item">
                 <tr>
                     <td class="item__id--body"></td>
-                    <td class="item__titulo--body"></td>
                     <td><input class="item__presenca--body" type="checkbox"/></td>
+                    <td class="item__titulo--body"></td>
                 </tr>
             </template>
     
