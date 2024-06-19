@@ -38,7 +38,7 @@ class WordPressDatabase
             return null;
         }
 
-        return insertionId;
+        return $insertionId;
     }
 
     public function getResult(string $query): ?object
