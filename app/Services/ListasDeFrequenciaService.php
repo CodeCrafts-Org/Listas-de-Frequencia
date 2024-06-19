@@ -69,7 +69,7 @@ class ListasDeFrequenciaService
     /**
      * @throws InvalidDataException quando houverem erros quanto aos dados de criação
      */
-    public function createLista(array $data): ListaDeFrequenciaEntity
+    public function createLista(array $data): ?ListaDeFrequenciaEntity
     {
         $listaDeFrequenciaCreation = new ListaDeFrequenciaCreation(
             new Titulo($data),
