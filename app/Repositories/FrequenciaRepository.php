@@ -106,4 +106,14 @@ class FrequenciaRepository implements IFrequenciaRepository
 
         return $result !== 0;
     }
+
+    public function deleteById(int $id): bool
+    {
+         $result = $this->frequenciaDataAccessObject->deleteSingleById($id);
+         if ($result === null) {
+            return false;
+         }
+
+         return $result;
+    }
 }

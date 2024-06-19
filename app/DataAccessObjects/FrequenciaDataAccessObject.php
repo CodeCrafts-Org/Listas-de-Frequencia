@@ -143,9 +143,28 @@ class FrequenciaDataAccessObject
 
     public function selectSingleByParentIdAndParentType(string $parentId, string $parentType): ?object
     {
-        $table = $this->listaDeFrequenciaDatabaseTable->getName();
+        $table = $this->frequenciaDatabaseTable->getName();
         $query = "SELECT * FROM {$table} WHERE frequenciavel_id = '{$parentId}' AND frequenciavel_type = '{$parentType}'";
 
         return $this->wordPressDatabase->getResult($query);
+    }
+
+    /**
+     * @return null quando houverem erros na remoção
+     * @return bool quando indicando sucesso, true para removido, false para não removido
+     */
+    public function deleteSingleById(int $id): ?bool
+    {
+        $primaryKey = $this->frequenciaDatabaseTable->getPrimaryKey();
+        $table = $this->frequenciaDatabaseTable->getName();
+        $where = [
+            $primaryKey => $id,
+        ];
+        $result = $this->wordPressDatabase->delete($table, $where);
+        if ($result === false) {
+            return null;
+        }
+
+        return $result !== 0;
     }
 }

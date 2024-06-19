@@ -124,4 +124,9 @@ class FrequenciaInMemoryRepository implements IFrequenciaRepository
 
         return true;
     }
+
+    public function deleteById(int $id): bool
+    {
+        return false;
+    }
 }

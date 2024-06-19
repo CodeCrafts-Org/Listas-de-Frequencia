@@ -145,6 +145,11 @@ class ListasDeFrequenciaService
         $this->listaDeFrequenciaRepository->deleteById($listaId);
     }
 
+    public function deleteFrequencia(int $frequenciaId): bool
+    {
+        $this->frequenciaRepository->deleteById($frequenciaId);
+    }
+
     // public function setFrequenciavelAsPresente(int $frequenciavelId, string $frequenciavelType): ?bool
     // {
     //     //
