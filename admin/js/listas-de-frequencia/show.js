@@ -91,25 +91,27 @@ function renderItems(tableBody, items) {
  * @return {void}
  */
 function renderDetails(fieldSet, details) {
-    let id = fieldSet.getElementById('id');
+    let id = fieldSet.querySelector('#id');
     if (id !== null) {
         id.value = details.id;
     }
-    let titulo = fieldSet.getElementById('titulo');
+    let titulo = fieldSet.querySelector('#titulo');
     if (titulo !== null) {
         titulo.value = details.titulo;
     }
-    let listadorDeFrequenciaId = fieldSet.getElementById('listador_de_frequencia_id');
+    let listadorDeFrequenciaId = fieldSet.querySelector('#listador_de_frequencia_id');
     if (listadorDeFrequenciaId !== null) {
-        listadorDeFrequenciaId.value = details.listadorDeFrequenciaId;
+        listadorDeFrequenciaId.value = details.parentId;
     }
-    let listadorDeFrequenciaType = fieldSet.getElementById('listador_de_frequencia_type');
+    let listadorDeFrequenciaType = fieldSet.querySelector('#listador_de_frequencia_type');
     if (listadorDeFrequenciaType !== null) {
-        listadorDeFrequenciaType.value = details.listadorDeFrequenciaType;
+        listadorDeFrequenciaType.value = details.parentType;
     }
-    let dataDeLancamento = fieldSet.getElementById('data_de_lancamento');
+    let dataDeLancamento = fieldSet.querySelector('#data_de_lancamento');
     if (dataDeLancamento !== null) {
-        dataDeLancamento.value = details.dataDeLancamento;
+        const parsed = details.data.iso.split(/\D+/);
+        const utc = Date.UTC(parsed[0], --parsed[1], parsed[2], parsed[3], parsed[4], parsed[5], parsed[6]);
+        dataDeLancamento.value = new Date(utc);
     }
 }
 
