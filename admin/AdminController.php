@@ -6,20 +6,22 @@ class AdminController
 {
     public function query()
     {
-        $queryVar = get_query_var(
-            /* key: */ 'id', 
-            /* default: */ null
-        );
-        if ($queryVar === null) {
+        $id = $_GET['id'] ?? null;
+        if ($id === null) {
             include __DIR__ . '/partials/listas-de-frequencia/index.php';
         } else {
-            $listaId = (int) $queryVar;
+            $listaId = (int) $id;
             include __DIR__ . '/partials/listas-de-frequencia/show.php';
         }
     }
 
     public function command()
     {
-        include __DIR__ . '/partials/listas-de-frequencia/create.php';
+        $id = $_GET['id'] ?? null;
+        if ($id === null) {
+            include __DIR__ . '/partials/listas-de-frequencia/create.php';
+        } else {
+            $listaId = (int) $id;
+        }
     }
 }

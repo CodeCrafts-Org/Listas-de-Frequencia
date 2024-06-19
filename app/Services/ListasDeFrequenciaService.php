@@ -47,10 +47,7 @@ class ListasDeFrequenciaService
         }
 
         return [
-            'titulo' => $listaDeFrequencia->getTitulo(),
-            'dataDeLancamento' => $listaDeFrequencia->getDataDeLancamento()->format('Y-m-d'),
-            'listadorId' => $listaDeFrequencia->getListadorDeFrequenciaId(),
-            'listadorType' => $listaDeFrequencia->getListadorDeFrequenciaType(),
+            'listaDeFrequencia' => $listaDeFrequencia,
             'frequencias' => $this->frequenciaRepository->listForListaDeFrequenciaId($listaId),
         ];
     }

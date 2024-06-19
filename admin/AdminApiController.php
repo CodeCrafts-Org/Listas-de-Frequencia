@@ -45,20 +45,19 @@ class AdminApiController
 
     public function showLista(\WP_REST_Request $request): \WP_REST_Response 
     {
-        $lista = $this->listasDeFrequenciaService->getLista(
+        $resultado = $this->listasDeFrequenciaService->getLista(
             /* listaId: */ $request->get_param('id')
         );
 
-        if ($lista === null) {
+        if ($resultado === null) {
             return new \WP_REST_Response([
                 'message' => 'Lista não encontrada',
                 'listaDeFrequencia' => null,
             ], 404);
         } else {
-            return new \WP_REST_Response([
+            return new \WP_REST_Response(array_merge($resultado, [
                 'message' => "Lista #{$id} encontrada com sucesso",
-                'listaDeFrequencia' => $lista,
-            ], 200);
+            ]), 200);
         }
     }
 

@@ -1,5 +1,5 @@
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
-<main class="main" data-id="<?= $listaId ?>">
+<main class="main lista-de-frequencia__details" data-id="<?= $listaId ?>">
     <div class="module__description">
         <h1 card="module__title">
             <a href="?page=listas-de-frequencia">Listas de Frequência</a>
@@ -15,8 +15,8 @@
         </div>
     </div>
     
-    <div class="resource__creation">
-        <form id="lista_de_frequencia__details" class="lista_de_frequencia__details">
+    <div class="resource__creation lista-de-frequencia__data">
+        <form>
             <fieldset class="form--data" disabled>
                 <div class="formgroup">
                     <label for="id">ID: </label>
@@ -47,33 +47,33 @@
             <thead>
                 <tr>
                     <th class="item__id--heading">ID</th>
-                    <th class="item__acoes--heading">AÇÕES</th>
                 </tr>
             </thead>
     
             <tbody class="listing__items">
             </tbody>
 
+            <template id="listing--error">
+                <tr>
+                    <td class="item--error" colspan="1">Algo inesperado ocorreu! Tente novamente</td>
+                </tr>
+            </template>
+
             <template id="listing--empty">
                 <tr>
-                    <td class="item--none" colspan="2">Não há frequências cadastradas</td>
+                    <td class="item--none" colspan="1">Não há frequências cadastradas</td>
                 </tr>
             </template>
 
             <template id="listing--item">
                 <tr>
                     <td class="item__id--body"></td>
-                    <td class="item__acoes--body">
-                        <div>
-                            <button class="item--delete">Excluir</button>
-                        </div>
-                    </td>
                 </tr>
             </template>
     
             <tfoot>
                 <tr>
-                    <td colspan="2"></td>
+                    <td colspan="1"></td>
                 </tr>
             </tfoot>
         </table>

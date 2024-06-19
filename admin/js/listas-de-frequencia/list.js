@@ -47,7 +47,7 @@ async function handleFetch(page) {
  * @return {void}
  */
 function renderError(body) {
-    const errorTemplate = document.getElementById('listing--item');
+    const errorTemplate = document.getElementById('listing--error');
     if (errorTemplate === null) {
         return;
     }
