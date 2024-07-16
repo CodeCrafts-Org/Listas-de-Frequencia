@@ -72,10 +72,13 @@ class ListasDeFrequenciaService
         if ($frequencia === null) {
             return null;
         }
+        $listaDeFrequencia = $this->listaDeFrequenciaRepository->getById(
+            $frequencia->getListaDeFrequenciaId()
+        );
 
         return [
-            'frequencia' => $this->frequencia,
-            'listaDeFrequencia' => [],
+            'frequencia' => $frequencia,
+            'listaDeFrequencia' => $listaDeFrequencia,
         ];
     }
 
@@ -150,9 +153,4 @@ class ListasDeFrequenciaService
     {
         return $this->frequenciaRepository->deleteById($frequenciaId);
     }
-
-    // public function setFrequenciavelAsPresente(int $frequenciavelId, string $frequenciavelType): ?bool
-    // {
-    //     //
-    // }
 }
